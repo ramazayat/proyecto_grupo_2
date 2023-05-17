@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>keko</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  Hello world
+  <p id="demo"></p>
+  <script src="logica.js"></script>
+ <form name="ingredientes">
+    <div>
+        Huevo
+      <input type="checkbox" name="ing1">
+    </div>
+    <div>
+        Harina
+        <input type="checkbox" name="ing2">
+    </div>
+    <div>
+      Leche
+      <input type="checkbox" name="ing3">
+    </div>
+    <div>
+      Papa
+      <input type="checkbox" name="ing4">
+    </div>
+    <div>
+        Manteca
+        <input type="checkbox" name="ing5">
+    </div>
+    <div>
+        <input type="submit" value="Buscar" href=recetas.html>
+    </div>
+ </form>
+
+  <script>
+    const busqueda  = [0,0,0,0,0];
+    const ingredientes = [document.getElementsByName( "ing1" ),     document.getElementsByName( "ing2" ), document.getElementsByName( "ing3" ), document.getElementsByName( "ing4" ), document.getElementsByName( "ing5" )];
+
+
+    for(let i = 0; i<cantIngredientes; i++){
+      if(ingredientes[i]==true){
+        busqueda[i]=1;
+      }
+    }
+    
+  </script>
+
+</body>
+
+</html>
