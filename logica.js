@@ -2,9 +2,8 @@ const bizcocho = [1,1,0,0,0];
 const tortillaPapa = [1,0,0,1,0];
 const galletitasManteca = [1,1,1,0,1];
 const purePapa = [0,0,1,1,1];
-const listaRecetas = [[bizcocho, 0], [tortillaPapa, 0], [galletitasManteca, 0], [purePapa, 0]];
-const ingredientesUsuario = [0,0,1,1,1];
-const cantRecetas = 4;
+const listaRecetas = [[bizcocho, 0, "Bizcocho"], [tortillaPapa, 0, "Tortilla de Papa"], [galletitasManteca, 0, "Galletitas de Manteca"], [purePapa, 0, "Puré de Papa"]];
+const ingredientesUsuario = [1,1,1,0,0];
 
 function ingredientesFaltantes(receta, busqueda){
 	var cantIngFaltantes=0;
@@ -19,40 +18,31 @@ function ingredientesFaltantes(receta, busqueda){
 function ordenarRecetas(){
 	// Recorro la lista de recetas y actualizo...
 
-	for(let i=0; i<cantRecetas; i++){
+	for(let i=0; i<listaRecetas.length; i++){
 		listaRecetas[i][1]=ingredientesFaltantes(listaRecetas[i][0],ingredientesUsuario);
 	} 
 
 	// Ordeno la lista 
-
-	/* esto no se que es ¿LAUCHA? 
-	const menorMayor = ordenar.sort((a,b)=>{
-		return a-b;gi
-	});
 	
-	return menorMayor */
-
-
-	//de aca para abajo hay que cambiar
-
-
+	var anteriorMayor=bizcocho.length+1;
+	var m=listaRecetas.length-1;
 	const ordenar = [];
-	for(let i=0; i<cantRecetas; i++){
-		var menor = 0;
-		for(let i=0; i<cantRecetas; i++){
-		if(menor<listaRecetas[i][0]){
-			menor=listaRecetas[i][0];
+	for(let i=0; i<listaRecetas.length; i++){
+		var mayor = 0;
+		for(let i=0; i<listaRecetas.length; i++){
+		if( listaRecetas[i][1]<anteriorMayor && listaRecetas[i][1]>mayor){
+			mayor=listaRecetas[i][1];
 		}
 		}
-		for(let i=0; i<cantRecetas; i++){
-		var m=0;
-		if(menor==listaRecetas[i][0]){
-			ordenar[m]=listaRecetas[i];
-			m++;
+		anteriorMayor=mayor;
+		for(let i=0; i<listaRecetas.length; i++){
+		if(mayor==listaRecetas[i][1]){
+			ordenar[m]=listaRecetas[i][2];
+			m--;
 		}
 		}
 	}
-	return ordenar;
+	return ordenar.toString();
 }
 
 console.log(ordenarRecetas())
