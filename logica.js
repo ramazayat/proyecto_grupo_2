@@ -25,21 +25,27 @@ function ordenarRecetas(){
 	// Ordeno la lista 
 	
 	var anteriorMayor=bizcocho.length+1;
-	var m=listaRecetas.length-1;
 	const ordenar = [];
+	var posOrdenar=listaRecetas.length-1;
+
+	//Obtengo el valor mayor de los ingredientes faltantes
+
 	for(let i=0; i<listaRecetas.length; i++){
 		var mayor = 0;
 		for(let i=0; i<listaRecetas.length; i++){
-		if( listaRecetas[i][1]<anteriorMayor && listaRecetas[i][1]>mayor){
-			mayor=listaRecetas[i][1];
-		}
+			if( listaRecetas[i][1]<anteriorMayor && listaRecetas[i][1]>mayor){
+				mayor=listaRecetas[i][1];
+			}
 		}
 		anteriorMayor=mayor;
+
+		//Completo el arreglo con los nombres de las recetas en orden
+
 		for(let i=0; i<listaRecetas.length; i++){
-		if(mayor==listaRecetas[i][1]){
-			ordenar[m]=listaRecetas[i][2];
-			m--;
-		}
+			if(mayor==listaRecetas[i][1]){
+				ordenar[posOrdenar]=listaRecetas[i][2];
+				posOrdenar--;
+			}
 		}
 	}
 	return ordenar.toString();
