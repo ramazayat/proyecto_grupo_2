@@ -27,6 +27,7 @@ function ordenarRecetas(){
 	var anteriorMayor=bizcocho.length+1;
 	var posOrdenar=listaRecetas.length-1;
 	const ordenar = [];
+
 	for(let i=0; i<listaRecetas.length; i++){
 		var mayor = 0;
 		for(let i=0; i<listaRecetas.length; i++){
