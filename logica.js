@@ -3,7 +3,24 @@ const tortillaPapa = [1,0,0,1,0];
 const galletitasManteca = [1,1,1,0,1];
 const purePapa = [0,0,1,1,1];
 const listaRecetas = [[bizcocho, 0, "Bizcocho"], [tortillaPapa, 0, "Tortilla de Papa"], [galletitasManteca, 0, "Galletitas de Manteca"], [purePapa, 0, "Puré de Papa"]];
-const ingredientesUsuario = [1,1,1,0,0];
+//const ingredientesUsuario = [1,1,1,0,0];
+var ingredientesUsuario=[]
+
+
+function agregarIngrediente(id){
+	ingredientesUsuarios.push(id)
+}
+
+function ingrediente_click(idIngrediente){
+	if($("ing0").is(":checked")){
+		agregarIngrediente(idIngrediente)
+	}
+	else{
+
+	}
+}
+
+
 
 function ingredientesFaltantes(receta, busqueda){
 	var cantIngFaltantes=0;

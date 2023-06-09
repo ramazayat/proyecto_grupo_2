@@ -13,63 +13,73 @@
   <script src="logica.js"></script>
 
   <div id="Menu">
-    <img src="keko final.png" alt="Icono KEKO" id="logo">
-    <p id="KEKO">
-        KEKO
-    </p> 
-    <div id="botones">
-      <button class="butt">
-        <a href="#">
-            Home
-        </a>
-      </button>     
-      <button class="butt">
-          <a href="#texto-x">
-              Contacto
+
+    <div class="inline">
+      <p id="KEKO">
+          KEKO
+      </p> 
+
+      <div class="inline">
+        <button class="butt-menu">
+          <a href="#">
+              Home
           </a>
-      </button>
+        </button>   
+
+        <button class="butt-menu">
+            <a href="#presentacion">
+                Contacto
+            </a>
+        </button>
+      </div>
     </div>
 
     <p id="slogan">
-      ¿Ke Komemos? ¿Ke Kocinamos?
+      ¿Qué comemos? ¿Qué cocinamos?
     </p>
 
-</div>
+  </div>
 
-<p id="exp">Ingresa los ingredientes que tenes a disposición y te damos las recetas que podes realizar.</p>
+<p id="exp">Ingresa los ingredientes que tenes a disposición y te damos las recetas que podes realizar</p>
   <form name="ingredientes">
     <div id="ingredientes">  
+
+      <div class="ingreso-ing">
+        <input type="checkbox" name="ing0" class="checkbox" onclick="ingrediente_click(1)">
+        Huevo
+    </div>
+
       <div class="ingreso-ing">
         <input type="checkbox" name="ing1" class="checkbox">
-          Huevo
-      </div>
-
-      <br>
-
-      <div class="ingreso-ing">
-        <input type="checkbox" name="ing2" class="checkbox" >
           Harina
       </div>
 
       <br>
 
       <div class="ingreso-ing">
-        <input type="checkbox" name="ing3" class="checkbox" >
-        Leche
+        <input type="checkbox" name="ing2" class="checkbox" >
+            Leche
       </div>
 
       <br>
 
       <div class="ingreso-ing">
-        <input type="checkbox" name="ing4" class="checkbox" >
+        <input type="checkbox" name="ing3" class="checkbox" >
         Papa
       </div>
 
       <br>
 
       <div class="ingreso-ing">
-        <input type="checkbox" name="ing5" class="checkbox" >
+        <input type="checkbox" name="ing4" class="checkbox" >
         Manteca
+      </div>
+
+      <br>
+
+      <div class="ingreso-ing">
+        <input type="checkbox" name="ing5" class="checkbox" >
+        Cerdo
       </div>
 
       <br>
@@ -251,15 +261,37 @@
      
     </div>
     <div ID="botones-ingre">
-      <input type="submit" value="Enviar" class="butt" href=recetas.html>
-      <input type="reset" value="Borrar" class="butt">
+      <input type="submit" value="Enviar" class="butt enviar" href=recetas.html>
+      <input type="reset" value="Borrar" class="butt borrar">
     </div>
   </form>
+
+
+  <div id="mejores-container">
+      <p class="titulitos">Nuestras mejores recetas</p>
+      
+      <div id="bizcocho" class="mejores-recetas">
+        <p class="nom-rece"> Bizcocho</p>
+      </div>
+      <div id="gallesManteca" class="mejores-recetas">
+        <p class="nom-rece"> Galletitas de Manteca</p>
+      </div>
+      <div id="tortillaPapa" class="mejores-recetas">
+        <p class="nom-rece"> Tortilla de Papa</p>
+      </div>
+  </div>
+
+
+
   
   <div id="encuesta-container">
-    <div id = "presentacion">
+    <div class = "presentacion">
+      <p class="titulitos">Presentación</p>
         <p>Esta es una página hecha para un proyecto dentro de una instiución escolar.
-           El objerivo de este sito web es que el usuario ingrese los ingredientes que tiene en a disposición y le salgan las recetas que puede realizar con los mismos. Las recetas que aprarezcan no van a tener todos los ingredientes que ingrese, pero va a ser la receta que coincida más con lo que ingresó previamente.
+           El objerivo de este sito web es que el usuario ingrese los ingredientes que tiene en a disposición
+            y le salgan las recetas que puede realizar con los mismos. Las recetas que aprarezcan no van a 
+            tener todos los ingredientes que ingrese, pero va a ser la receta que coincida más con lo que 
+            ingresó previamente.
            <br>
            Cualquier comentario que quieran realizar no duden en dejarlo en la sección correspondiente.
            <br>
@@ -267,8 +299,9 @@
         </p>
     </div>
 
-    <form id="encuesta">
-      <div id="preguntas">
+    <form id="encuesta" class="presentacion">
+      <div class="preguntas">
+        <p class="titulitos">Comentarios</p>
         <label for="nombre">Nombre: </label>
         <br>
         <input type="text" placeholder="Tu nombre" name="Nombre" required>
@@ -279,10 +312,10 @@
         <br>
         <label for="mensaje">Dejanos un comentario:</label>
         <br>
-        <textarea placeholder="Mensaje" name="mensaje" id="" cols="50" rows="5"></textarea>
+        <textarea placeholder="Mensaje" name="mensaje" id="textarea" rows="5"></textarea>
       </div>
-        <input type="submit" value="Enviar" class="butt2">
-        <input type="reset" value="Borrar" class="butt2">
+        <input type="submit" value="Enviar" class="butt enviar">
+        <input type="reset" value="Borrar" class="butt borrar">
     </form>
     
 </div>
@@ -290,3 +323,6 @@
 </body>
 
 </html>
+
+
+<!--ESTO ES PARA COMENTAR-->
