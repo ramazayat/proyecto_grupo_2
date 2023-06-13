@@ -3,7 +3,26 @@ const tortillaPapa = [1,0,0,1,0];
 const galletitasManteca = [1,1,1,0,1];
 const purePapa = [0,0,1,1,1];
 const listaRecetas = [[bizcocho, 0, "Bizcocho"], [tortillaPapa, 0, "Tortilla de Papa"], [galletitasManteca, 0, "Galletitas de Manteca"], [purePapa, 0, "Puré de Papa"]];
-const ingredientesUsuario = [1,1,1,0,0];
+/*const ingredientesUsuario = [1,1,1,0,0];*/
+var ingredientesUsuario2=[]
+
+
+
+function agregarIngrediente(id){
+	ingredientesUsuario2.push(id)
+}
+
+function ingrediente_click(idIngrediente){
+	for(let i=0; i<listaRecetas.length; i++){
+		if($(id[i]).is(":checked"))
+		{
+			agregarIngrediente(idIngrediente)
+		}
+		else{
+
+		}
+	}
+}
 
 function ingredientesFaltantes(receta, busqueda){
 	var cantIngFaltantes=0;
@@ -19,16 +38,14 @@ function ordenarRecetas(){
 	// Recorro la lista de recetas y actualizo...
 
 	for(let i=0; i<listaRecetas.length; i++){
-		listaRecetas[i][1]=ingredientesFaltantes(listaRecetas[i][0],ingredientesUsuario);
+		listaRecetas[i][1]=ingredientesFaltantes(listaRecetas[i][0],ingredientesUsuario2);
 	} 
 
 	// Ordeno la lista 
 	
 	var anteriorMayor=bizcocho.length+1;
-	const ordenar = [];
 	var posOrdenar=listaRecetas.length-1;
-
-	//Obtengo el valor mayor de los ingredientes faltantes
+	const ordenar = [];
 
 	for(let i=0; i<listaRecetas.length; i++){
 		var mayor = 0;
@@ -38,9 +55,6 @@ function ordenarRecetas(){
 			}
 		}
 		anteriorMayor=mayor;
-
-		//Completo el arreglo con los nombres de las recetas en orden
-
 		for(let i=0; i<listaRecetas.length; i++){
 			if(mayor==listaRecetas[i][1]){
 				ordenar[posOrdenar]=listaRecetas[i][2];
