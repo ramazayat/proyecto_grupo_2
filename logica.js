@@ -30,7 +30,7 @@ function ingrediente_click(idIngrediente){
       console.log(ingredientesUsuario);
     } else {
       // Checkbox desmarcado: remover elemento del arreglo
-      var index = ingredientesUsuario.indexOf("idIngrediente");
+      var index = ingredientesUsuario.indexOf(idIngrediente);
       if (index > -1) {
         ingredientesUsuario.splice(index, 1);
         console.log(ingredientesUsuario);
@@ -50,8 +50,7 @@ function ingredientesFaltantes(receta, busqueda){
 	return cantIngFaltantes;
 }
 
-function ordenarRecetas(){
-	// Recorro la lista de recetas y actualizo...
+function ordenarRecetas(){	// Recorro la lista de recetas y actualizo...
 
 	for(let i=0; i<listaRecetas.length; i++){
 		listaRecetas[i][1]= ingredientesFaltantes(listaRecetas[i][0],ingredientesUsuario);
