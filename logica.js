@@ -5,7 +5,7 @@ const purePapa = [2,3,4];
 const listaRecetas = [[bizcocho, 0, "Bizcocho",2], [tortillaPapa, 0, "Tortilla de Papa",2], [galletitasManteca, 0, "Galletitas de Manteca",4], [purePapa, 0, "Puré de Papa",3]];
 const ingredientesUsuario=[];
 
-function ingrediente_click(idIngrediente){
+/*function ingrediente_click(idIngrediente){
 	if($("#"+idIngrediente).is(":checked")){
 		agregarIngrediente(idIngrediente);
 	}
@@ -17,7 +17,26 @@ function ingrediente_click(idIngrediente){
 function agregarIngrediente(id){
 	ingredientesUsuario.push(id);
 }
+*/
 
+function ingrediente_click(idIngrediente){
+    // Obtener el checkbox por su id
+    var checkbox = document.getElementById(idIngrediente);
+
+    // Verificar el estado del checkbox
+    if (checkbox.checked) {
+      // Checkbox marcado: agregar elemento al arreglo
+      ingredientesUsuario.push(idIngrediente);
+      console.log(ingredientesUsuario);
+    } else {
+      // Checkbox desmarcado: remover elemento del arreglo
+      var index = ingredientesUsuario.indexOf("idIngrediente");
+      if (index > -1) {
+        ingredientesUsuario.splice(index, 1);
+        console.log(ingredientesUsuario);
+      }
+    }
+}
 
 function ingredientesFaltantes(receta, busqueda){
 	var cantIngFaltantes=0;
