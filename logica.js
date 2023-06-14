@@ -1,33 +1,28 @@
-const bizcocho = [1,1,0,0,0];
-const tortillaPapa = [1,0,0,1,0];
-const galletitasManteca = [1,1,1,0,1];
-const purePapa = [0,0,1,1,1];
-const listaRecetas = [[bizcocho, 0, "Bizcocho"], [tortillaPapa, 0, "Tortilla de Papa"], [galletitasManteca, 0, "Galletitas de Manteca"], [purePapa, 0, "Puré de Papa"]];
-/*const ingredientesUsuario = [1,1,1,0,0];*/
-var ingredientesUsuario2=[]
-
+const bizcocho = [0,1];
+const tortillaPapa = [0,3];
+const galletitasManteca = [0,1,2,4];
+const purePapa = [2,3,4];
+const listaRecetas = [[bizcocho, 0, "Bizcocho",2], [tortillaPapa, 0, "Tortilla de Papa",2], [galletitasManteca, 0, "Galletitas de Manteca",4], [purePapa, 0, "Puré de Papa",3]];
+const ingredientesUsuario=[];
 
 
 function agregarIngrediente(id){
-	ingredientesUsuario2.push(id)
+	ingredientesUsuario.push(id);
 }
 
 function ingrediente_click(idIngrediente){
-	for(let i=0; i<listaRecetas.length; i++){
-		if($(id[i]).is(":checked"))
-		{
-			agregarIngrediente(idIngrediente)
-		}
-		else{
-
-		}
+	if($("#"+idIngrediente).is(":checked")){
+		agregarIngrediente(idIngrediente);
+	}
+	else{
+	
 	}
 }
 
 function ingredientesFaltantes(receta, busqueda){
 	var cantIngFaltantes=0;
 	for(let i = 0; i<receta.length; i++){
-		if(receta[i]>busqueda[i]){
+		if(receta[i]===busqueda[i]){
 			cantIngFaltantes++
 		}
 	}
@@ -38,31 +33,32 @@ function ordenarRecetas(){
 	// Recorro la lista de recetas y actualizo...
 
 	for(let i=0; i<listaRecetas.length; i++){
-		listaRecetas[i][1]=ingredientesFaltantes(listaRecetas[i][0],ingredientesUsuario2);
+		listaRecetas[i][1]= ingredientesFaltantes(listaRecetas[i][0],ingredientesUsuario);
 	} 
 
 	// Ordeno la lista 
 	
-	var anteriorMayor=bizcocho.length+1;
+	var anteriorMayor=6;
 	var posOrdenar=listaRecetas.length-1;
 	const ordenar = [];
 
 	for(let i=0; i<listaRecetas.length; i++){
 		var mayor = 0;
 		for(let i=0; i<listaRecetas.length; i++){
-			if( listaRecetas[i][1]<anteriorMayor && listaRecetas[i][1]>mayor){
-				mayor=listaRecetas[i][1];
+			if( (listaRecetas[i][3] - listaRecetas[i][1])<anteriorMayor && (listaRecetas[i][3] - listaRecetas[i][1])>mayor){
+				mayor= (listaRecetas[i][3] - listaRecetas[i][1]);
 			}
 		}
 		anteriorMayor=mayor;
 		for(let i=0; i<listaRecetas.length; i++){
-			if(mayor==listaRecetas[i][1]){
+			if(mayor==(listaRecetas[i][3] - listaRecetas[i][1])){
 				ordenar[posOrdenar]=listaRecetas[i][2];
 				posOrdenar--;
 			}
 		}
 	}
-	return ordenar.toString();
+	return ordenar;
 }
 
 console.log(ordenarRecetas())
+console.log(ingredientesUsuario);
