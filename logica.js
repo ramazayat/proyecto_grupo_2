@@ -5,11 +5,6 @@ const purePapa = [2,3,4];
 const listaRecetas = [[bizcocho, 0, "Bizcocho",2], [tortillaPapa, 0, "Tortilla de Papa",2], [galletitasManteca, 0, "Galletitas de Manteca",4], [purePapa, 0, "Puré de Papa",3]];
 const ingredientesUsuario=[];
 
-
-function agregarIngrediente(id){
-	ingredientesUsuario.push(id);
-}
-
 function ingrediente_click(idIngrediente){
 	if($("#"+idIngrediente).is(":checked")){
 		agregarIngrediente(idIngrediente);
@@ -19,12 +14,19 @@ function ingrediente_click(idIngrediente){
 	}
 }
 
+function agregarIngrediente(id){
+	ingredientesUsuario.push(id);
+}
+
+
 function ingredientesFaltantes(receta, busqueda){
 	var cantIngFaltantes=0;
 	for(let i = 0; i<receta.length; i++){
-		if(receta[i]===busqueda[i]){
-			cantIngFaltantes++
-		}
+		for(let h = 0; h<busqueda.length; h++){
+			if(receta[i]===busqueda[h]){
+				cantIngFaltantes++
+			}
+		}	
 	}
 	return cantIngFaltantes;
 }
@@ -38,7 +40,7 @@ function ordenarRecetas(){
 
 	// Ordeno la lista 
 	
-	var anteriorMayor=6;
+	var anteriorMayor=32;
 	var posOrdenar=listaRecetas.length-1;
 	const ordenar = [];
 
@@ -51,7 +53,7 @@ function ordenarRecetas(){
 		}
 		anteriorMayor=mayor;
 		for(let i=0; i<listaRecetas.length; i++){
-			if(mayor==(listaRecetas[i][3] - listaRecetas[i][1])){
+			if(mayor==(listaRecetas[i][3] - listaRecetas[i][1])&&posOrdenar>=0){
 				ordenar[posOrdenar]=listaRecetas[i][2];
 				posOrdenar--;
 			}
@@ -60,5 +62,5 @@ function ordenarRecetas(){
 	return ordenar;
 }
 
-console.log(ordenarRecetas())
+console.log(ordenarRecetas());
 console.log(ingredientesUsuario);
