@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/bddc6f7004.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Keko</title>
+    <link rel="icon" href="keko icon.png">
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <script src="logica.js"></script>
+
+    <div id="Menu">
+
+      <div class="inline">
+        <p id="KEKO">
+            KEKO
+        </p> 
+
+        <div id="h&c" class="inline">
+          <button class="butt-menu butt-agrandar">
+            <a href="#" >
+                Home
+            </a>
+          </button>   
+
+          <button class="butt-menu butt-agrandar">
+              <a href="#encuesta-container">
+                  Contacto
+              </a>
+          </button>
+        </div>
+        <p id="slogan" class="dere">
+          ¿Qué comemos?
+        </p>
+      </div>
+
+    </div>
+
+    <p id="exp">Marcá los ingredientes que tenés a disposición y te devolvemos las recetas que podés realizar</p>
+    <form name="ingredientes" action="" method="get">
+      <div id="ingredientes">  
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="0" onclick="ingrediente_click(0)">
+          <label for="0" >Huevo</label>
+        </div>
+      
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="1" onclick="ingrediente_click(1)">
+            <label for="1">Harina</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="2" onclick="ingrediente_click(2)">
+             <label for="2">Leche</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="3" onclick="ingrediente_click(3)">
+          <label for="3">Papa</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="4"onclick="ingrediente_click(4)">
+          <label for="4">Manteca</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="5" onclick="ingrediente_click(5)">
+          <label for="5">Cerdo</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="6" onclick="ingrediente_click(6)">
+            <label for="6">Pan rallado</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="7" onclick="ingrediente_click(7)">
+            <label for="7">Carne</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="8" onclick="ingrediente_click(8)">
+          <label for="8">Pollo</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="9" onclick="ingrediente_click(9)">
+          <label for="9">Pescado</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="10" onclick="ingrediente_click(10)">
+          <label for="10">Salsa de tomate</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="11" onclick="ingrediente_click(11)">
+            <label for="11">Levadura</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="12" onclick="ingrediente_click(12)">
+            <label for="12">Queso</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="13" onclick="ingrediente_click(13)">
+          <label for="13">Cacao</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="14" onclick="ingrediente_click(14)">
+          <label for="14">Crema</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="15" onclick="ingrediente_click(15)">
+          <label for="15">Lechuga</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="16" onclick="ingrediente_click(16)">
+            <label for="16">Tomate</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="17" onclick="ingrediente_click(17)">
+            <label for="17">Salsa de soja</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing" butt-agrandar>
+          <input type="checkbox" id="18" onclick="ingrediente_click(18)" >
+          <label for="18">Salsa César</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="19" onclick="ingrediente_click(19)">
+          <label for="19">Palta</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="20" onclick="ingrediente_click(20)">
+          <label for="20">Manzana</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="21" onclick="ingrediente_click(21)">
+            <label for="21">Banana</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="22"  onclick="ingrediente_click(22)">
+            <label for="22">Chips chocolate</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="23"  onclick="ingrediente_click(23)">
+          <label for="23">Arroz</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="24"onclick="ingrediente_click(24)">
+          <label for="24">Brócoli</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="25"  onclick="ingrediente_click(25)">
+          <label for="25">Champiñones</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="26" onclick="ingrediente_click(26)">
+            <label for="26">Espinaca</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="27" onclick="ingrediente_click(27)">
+            <label for="27">Frutilla</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="28" onclick="ingrediente_click(28)">
+          <label for="28">Lentejas</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="29" onclick="ingrediente_click(29)">
+          <label for="29">Limon</label>
+        </div>
+
+        <br>
+
+        <div class="ingreso-ing butt-agrandar">
+          <input type="checkbox" id="30" onclick="ingrediente_click(30)">
+          <label for="30">Langostinos</label>
+        </div>
+        
+      
+      </div>
+      <div>
+        <input id="submitBtn"value="Enviar" class="butt enviar butt-agrandar">
+        <input type="reset" value="Borrar" class="butt borrar butt-agrandar">
+      </div>
+    </form>
+
+    <div id="respuesta"></div>
+
+    <p class="titulitos" id="h_nmr">Nuestras mejores recetas</p>
+    
+    <div id="ContCarrusel"> 
+      <ul>
+        <li>
+          <div class="carrusel" id="bizcocho_foto">
+              <div class="cartel_nombre">
+                <p class="titulitos2">
+                  Bizcocho
+                </p>
+              </div>
+              <div class="TarjetaCarrusel" id="tarjeta_bizcocho">
+                  <img class="best_recetas" src="bizcocho.jpeg" alt="Foto de Bizocho">
+              </div>
+
+          </div>
+        </li>
+        <li>
+          <div class="carrusel" id="torrilla_papa_foto">
+            <div class="cartel_nombre">
+              <p class="titulitos2">
+                Tortilla de papa
+              </p>
+            </div>
+              <div class="TarjetaCarrusel" id="tarjeta-tortilla">
+                  <img class="best_recetas" src="tortilla-de-papa.jpg" alt="Foto de Tortilla de papa">
+              </div>
+              
+          </div>
+        </li>
+        <li>
+          <div class="carrusel" id="galletitas_manteca">
+            <div class="cartel_nombre">
+              <p class="titulitos2">
+                Galletitas de manteca
+              </p>
+            </div>
+              <div class="TarjetaCarrusel" id="tarjeta-galletitas-manteca">
+                  <img class="best_recetas" src="galletitas_de_manteca.jpeg" alt="Foto de galletitas de manteca">
+              </div>
+          </div>
+        </li>
+      </ul>
+  </div>
+
+
+
+    
+    <div id="encuesta-container">
+      <div class = "presentacion">
+        <p class="titulitos">Presentación</p>
+          <p style="color: #502314;">Esta es una página hecha para un proyecto dentro de una instiución escolar.
+            El objerivo de este sito web es que el usuario ingrese los ingredientes que tiene en a disposición
+              y le salgan las recetas que puede realizar con los mismos. Las recetas que aprarezcan no van a 
+              tener todos los ingredientes que ingrese, pero va a ser la receta que coincida más con lo que 
+              ingresó previamente.
+            <br>
+            Cualquier comentario que quieran realizar no duden en dejarlo en la sección correspondiente.
+            <br>
+            Esta página web la realizó Lautaro Ariel Fraga, Ramiro Zayat y Tomás Echandía.
+          </p>
+      </div>
+
+      <form id="encuesta" class="presentacion">
+        <div class="preguntas">
+            <p class="titulitos">Comentarios</p>
+            <label for="nombre">Nombre: </label>
+            <br>
+            <input type="text" placeholder="  Tu nombre" id="nombre" class="controls" required autocomplete="on">
+            <br>
+            <label for="email">Email: </label>
+            <br>
+            <input type="email" placeholder="  mail@ejemplo.com" id="email" class="controls" required autocomplete="on">
+            <br>
+            <label for="textarea">Dejanos un comentario:</label>
+            <br>
+            <textarea placeholder="  Mensaje" id="textarea" rows="5" class="controls"></textarea>
+        </div>
+            <input type="submit" value="Enviar" class="butt enviar butt-agrandar">
+            <input type="reset" value="Borrar" class="butt borrar butt-agrandar">
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  </body>
+  
+</html>
+
+
+<!--ESTO ES PARA COMENTAR-->

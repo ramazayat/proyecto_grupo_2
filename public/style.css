@@ -1,0 +1,302 @@
+body{
+    background-color: #f5ebdc;
+    margin:0;
+}
+
+#Menu{
+    background-color: #efe0cc;  
+    padding: 0.5% 1% ;
+    position: sticky;
+    top:0;
+    border-radius: 1em;
+    z-index: 1;
+    box-shadow: 3px 3px 20px #57200c;
+    margin: 0.5em 1% ;
+
+}
+
+
+#Menu a{ 
+    color: #f5ebdc ;
+    text-decoration: none;
+}
+
+#KEKO{
+    font-family: cooper std;
+    font-size: 2.5em;
+    color: #502314;
+    display: inline-block;
+    margin-bottom: -2%;
+}
+
+
+#slogan{
+    display: inline-block;
+    font-size: 2em;
+    font-family: cooper std;
+    color: #502314;
+}
+
+
+
+.dere{
+    float: right;
+}
+
+#exp{
+    color: #502314;
+}
+
+.inline{
+    display: inline;
+}
+
+.butt{
+    margin: 1% 1% 0%;
+    padding: 0.5%;
+    border-radius: 5em;
+    height: 2.5em;
+    width: 7em;
+    text-align: center;
+    cursor:  pointer;
+    font-family: cooper std;
+  
+}
+
+.butt-menu{
+    margin: 1% 1% 0%;
+    border-radius: 5em;
+    height: 3.5em;
+    width: 8em;
+    text-align: center;
+    cursor:  pointer;
+    background-color: #502314;
+    color: #f5ebdc;
+    border: #502314;
+    font-family: cooper std;
+    margin-top: -1em;
+}
+
+.butt-agrandar:hover{
+    transform: scale(1.2);
+
+}
+
+.borrar{
+    background-color: #d72300;
+    color: #f5ebdc;
+    border: #d72300;
+}
+
+.enviar{
+    background-color: #0b8100;
+    color: #f5ebdc;
+    border: #0b8100;
+}
+
+#exp{
+    font-size: 1.75em;
+    padding: 1% 1% 0%;
+    margin: 1% 1% 0%;
+    font-family: cooper std;
+}
+
+#ingredientes{
+    background-color: #efe0cc;
+    border-radius: 1em;
+    padding: 1%;
+    margin: 1% 1% 0%;
+    height: 100%;
+    column-width: 13em;
+}
+
+.ingreso-ing{
+    display: inline-block;
+    color: #502314;
+    font-size: 1em;
+}
+
+
+#ingredientes input[type="checkbox"]{
+   display: none;
+}
+
+#ingredientes label::before{
+    font-family: FontAwesome;
+    content: "x";
+    color:#d72300;
+    display: inline-block;
+    background-color: #efe0cc;
+    width: 1em;
+    height: 1em;
+}
+
+
+#ingredientes [type="checkbox"]:checked + label::before{
+    border: none;
+    font-family: FontAwesome;
+    content: "\f00c      ";
+    color:#0b8100 ;
+
+}
+
+#ingredientes label{
+    font-family: cooper std;
+    font-size: 1em;
+    color:#502314;
+    cursor: pointer;
+}
+
+
+#encuesta-container{
+    display: flex;
+    border-radius: 1em;
+    padding: 1%;
+    margin: 1% 1% 0%;
+    background-color: #efe0cc;
+}
+
+.presentacion{
+    margin: 1em;
+    padding: 1em;
+    font-size: 1.2em;
+    width: 50%;
+    height: 100%;
+    display: inline-block;
+    
+}
+
+#h_nmr{
+    font-size: 1.75em;
+    margin: 2em 0 0 2em;
+}
+
+.titulitos{  
+    margin: 0em;
+    font-size: 2em;
+    font-family: cooper std;
+    color: #502314;
+}
+
+#ContCarrusel{
+    margin: 3% 15%;
+    border-radius: 4em;
+    height: 30em;
+    min-width: 60%;
+    width: 70%;
+    overflow: hidden;
+    box-shadow: 3px 3px 20px #57200c;
+}
+
+#ContCarrusel ul{
+    padding: 0;
+    display: flex;
+    animation: slide 9s infinite alternate;
+    width: 300%;
+    height: 100%;
+
+}
+
+#ContCarrusel li{
+    width: 100%;
+    list-style: none;
+}
+
+.carrusel{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    
+}
+
+.TarjetaCarrusel{
+    height: 100%;
+}
+
+
+
+
+.cartel_nombre{
+    position:absolute;
+    left: 5%;
+    top: 5%;
+}
+
+.titulitos2{  
+    background-color: #efe0cc;
+    margin: 0em;
+    font-size: 2em;
+    font-family: cooper std;
+    color: #502314;
+    text-align: center;
+    border-radius: 1em;
+    padding: 0.3em;
+}
+
+.best_recetas{
+    object-fit:cover;
+    object-position: top;
+    height: 100%;
+    width: 100%;
+}
+
+@keyframes slide {
+    0% {margin-left: 0%; }
+    30%{margin-left: 0%;}
+
+    35%{margin-left: -100%;}
+    65%{margin-left: -100%;}
+
+    70%{margin-left: -200%;}
+    100%{margin-left: -200%;}
+}
+
+.nom-rece{
+    margin: 0;
+    font-size: 1.5em;
+    color: #502314;
+    font-family: cooper std ;
+    padding: 1em;
+}
+
+#encuesta{
+    margin: 1em;
+    display: inline-block;
+    font-size: 16px;
+    height: 100%;
+    width: 50%;
+}
+
+#textarea{
+    resize:none;
+    width: 20em;
+}
+
+.preguntas{
+    margin-left: 1em;
+}
+
+.controls{
+    background-color: #f5ebdc;
+    border: none;
+    border-radius: 1em;
+}
+
+
+@media   (max-width: 800px) {
+    #slogan{
+        font-size: 1.5em;
+    }
+    .butt-menu{
+        width: 5.5em;
+    }
+    #exp{
+        font-size: 1em;
+    }
+}
+
+@media   (max-width: 714px) {
+    #KEKO{
+        font-size: 2em;
+    }
+}
