@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000; // Puerto de la APP Web
+const port = 5000; // Puerto de la APP Web
 const bizcocho = [0,1];
 const tortillaPapa = [0,3];
 const galletitasManteca = [0,1,2,4];
@@ -46,7 +46,8 @@ app.post('/greet', (req, res) => {
 
 app.post('/obtenerRecetas', (req, res) => { 
   const { ingredientesUsuario } = req.body;
-  let recetas = ordenarRecetas();
+  console.log(ingredientesUsuario)
+  let recetas = ordenarRecetas(ingredientesUsuario);
   res.json({recetas});
 
 
@@ -87,10 +88,10 @@ function ingredientesFaltantes(receta, busqueda){
   return cantIngFaltantes;
   }
   
-  function ordenarRecetas(){	// Recorro la lista de recetas y actualizo...
+  function ordenarRecetas(ingredientes){	// Recorro la lista de recetas y actualizo...
   
   for(let i=0; i<listaRecetas.length; i++){
-    listaRecetas[i][1]= ingredientesFaltantes(listaRecetas[i][0],ingredientesUsuario);
+    listaRecetas[i][1]= ingredientesFaltantes(listaRecetas[i][0],ingredientes);
   } 
   
   // Ordeno la lista 
