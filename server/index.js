@@ -13,37 +13,6 @@ const listaRecetas = [[bizcocho, 0, "Bizcocho",2], [tortillaPapa, 0, "Tortilla d
 app.use(express.static(__dirname + "/../public")); // Indica que la carpeta 'public' contiene los archivos estáticos de la aplicación web
 app.use(express.json());  // Indica que se usarán datos en formato JSON en las peticiones
 
-// Ruta para obtener el saludo, recibe el nombre en el body de la petición y devuelve el saludo en formato JSON
-
-app.post('/greet', (req, res) => { 
-  const { name } = req.body;
-
-  const greeting = `Hello, ${name}!`;
-
-  res.json({greeting});
-
-
-  // Código para obtener el saludo usando los datos guardados en la BBDD
-  // Ustedes deben reemplazar este código por el suyo, según las necesidades de su aplicación
-  /* 
-  db.returnGreetingFromDB(name)
-
-    .then((greeting) => {
-      if (greeting) {
-        console.log(greeting);
-        res.json({ greeting });
-      } else {
-        res.status(500).json({ error: 'Internal Server Error' });
-      }
-    })
-
-    .catch((error) => {
-      console.error('Error:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    });
-  */
-});
-
 app.post('/obtenerRecetas', (req, res) => { 
   const { ingredientesUsuario } = req.body;
   console.log(ingredientesUsuario)
