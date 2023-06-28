@@ -22,10 +22,12 @@ function ingrediente_click(idIngrediente){
 function borrarIngredientes(){
 
   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
+  var a = Array.from(ingredientesUsuario);
+  
   checkboxes.forEach(function(checkbox) {
     checkbox.checked = false;
   });
+  ingredientesUsuario.length = 0;
 }
 
 // Agrega un listener al botón de submit para que cuando se haga click se envíe el nombre ingresado al servidor
