@@ -19,6 +19,14 @@ function ingrediente_click(idIngrediente){
     }
   }
 }
+function borrarIngredientes(){
+
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+  checkboxes.forEach(function(checkbox) {
+    checkbox.checked = false;
+  });
+}
 
 // Agrega un listener al botón de submit para que cuando se haga click se envíe el nombre ingresado al servidor
 submitBtn.addEventListener('click', () => {
