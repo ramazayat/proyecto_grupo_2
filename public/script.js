@@ -19,11 +19,10 @@ function ingrediente_click(idIngrediente){
     }
   }
 }
-function borrarIngredientes(){
 
+function borrarIngredientes(){
   var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  var a = Array.from(ingredientesUsuario);
-  
+  ingredientesUsuario.length=0;
   checkboxes.forEach(function(checkbox) {
     checkbox.checked = false;
   });
