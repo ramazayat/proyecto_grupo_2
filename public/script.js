@@ -41,8 +41,15 @@ submitBtn.addEventListener('click', () => {
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se obtiene el saludo y se muestra en pantalla
     outputDiv.textContent = data.recetas;
+    /*$("#output").html("")
+    for(let receta of recetas){
+      let recetaTexto=""
+      vedetexto+="<div class>" + recetas.nombre
+      recetastext+="</div>"
+      $("#output").oppend(recetaTexto) 
+    }*/
   })
   .catch(error => { // Si hubo un error, se muestra en consola
     console.error('Error:', error);
   });
-})
+  })

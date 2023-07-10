@@ -1,12 +1,16 @@
 const express = require('express');
 const app = express();
 const port = 5000; // Puerto de la APP Web
-const bizcocho = [0,1];
-const tortillaPapa = [0,3];
-const galletitasManteca = [0,1,2,4];
-const purePapa = [2,3,4];
-const listaRecetas = [[bizcocho, 0, "Bizcocho",2], [tortillaPapa, 0, "Tortilla de Papa",2], [galletitasManteca, 0, "Galletitas de Manteca",4], [purePapa, 0, "Puré de Papa",3]];
 
+const bizcocho = {nombre:"Bizcocho", ingredientes: [0,1], pasosASeguir: "pasos bizcocho"};
+const tortillaPapa = {nombre: "Tortilla de Papa", ingredientes: [0,3], pasosASeguir: "pasos tortilla"};
+const galletitasManteca = {nombre:"Galletitas de Manteca", ingredientes:[0,1,2,4], pasosASeguir:"pasos galletitas"};
+const purePapa = {nombre:"Pure de Papa", ingredientes:[2,3,4], pasosASeguir:"pasos pure"};
+const listaRecetas = [bizcocho,tortillaPapa,galletitasManteca,purePapa]
+/*const listaRecetas = [[bizcocho.ingredientes, 0, bizcocho.nombre,2, bizcocho.pasosASeguir],
+ [tortillaPapa.ingredientes, 0, tortillaPapa.nombre,2,tortillaPapa.pasosASeguir],
+  [galletitasManteca.ingredientes, 0, galletitasManteca.nombre,4,galletitasManteca.pasosASeguir],
+   [purePapa.ingredientes, 0, purePapa.nombre,3,purePapa.pasosASeguir]];*/
 // Código para importar el módulo 'bd' que maneja la conexión y las consultas a la BBDD (Está comentado para que no falle si no está corriendo el servidor MySQL)
 //const db = require('./../database/db');
 
@@ -17,6 +21,7 @@ app.post('/obtenerRecetas', (req, res) => {
   const { ingredientesUsuario } = req.body;
   console.log(ingredientesUsuario)
   let recetas = ordenarRecetas(ingredientesUsuario);
+  
   res.json({recetas});
 
 
@@ -79,7 +84,7 @@ function ingredientesFaltantes(receta, busqueda){
     anteriorMayor=mayor;
     for(let i=0; i<listaRecetas.length; i++){
       if(mayor==(listaRecetas[i][3] - listaRecetas[i][1])&&posOrdenar>=0){
-        ordenar[posOrdenar]=listaRecetas[i][2];
+        ordenar[posOrdenar]={nombre:listaRecetas[i][2],pasos:listaRecetas[4]};
         posOrdenar--;
       }
     }
