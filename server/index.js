@@ -2,15 +2,16 @@ const express = require('express');
 const app = express();
 const port = 5000; // Puerto de la APP Web
 
-const bizcocho = {nombre:"Bizcocho", ingredientes: [0,1], pasosASeguir: "pasos bizcocho"};
-const tortillaPapa = {nombre: "Tortilla de Papa", ingredientes: [0,3], pasosASeguir: "pasos tortilla"};
-const galletitasManteca = {nombre:"Galletitas de Manteca", ingredientes:[0,1,2,4], pasosASeguir:"pasos galletitas"};
-const purePapa = {nombre:"Pure de Papa", ingredientes:[2,3,4], pasosASeguir:"pasos pure"};
-const listaRecetas = [bizcocho,tortillaPapa,galletitasManteca,purePapa]
+const bizcocho = {nombre:"Bizcocho", ingredientes: [0,1], pasos: "pasos bizcocho", diff: 0};
+const tortillaPapa = {nombre: "Tortilla de Papa", ingredientes: [0,3], pasos: "pasos tortilla", diff: 0};
+const galletitasManteca = {nombre:"Galletitas de Manteca", ingredientes:[0,1,2,4], pasos:"pasos galletitas", diff: 0};
+const purePapa = {nombre:"Pure de Papa", ingredientes:[2,3,4], pasos:"pasos pure", diff: 0};
+const listaRecetas = [bizcocho,tortillaPapa,galletitasManteca,purePapa];
 /*const listaRecetas = [[bizcocho.ingredientes, 0, bizcocho.nombre,2, bizcocho.pasosASeguir],
  [tortillaPapa.ingredientes, 0, tortillaPapa.nombre,2,tortillaPapa.pasosASeguir],
   [galletitasManteca.ingredientes, 0, galletitasManteca.nombre,4,galletitasManteca.pasosASeguir],
    [purePapa.ingredientes, 0, purePapa.nombre,3,purePapa.pasosASeguir]];*/
+   
 // Código para importar el módulo 'bd' que maneja la conexión y las consultas a la BBDD (Está comentado para que no falle si no está corriendo el servidor MySQL)
 //const db = require('./../database/db');
 
@@ -64,30 +65,30 @@ function ingredientesFaltantes(receta, busqueda){
   
   function ordenarRecetas(ingredientes){	// Recorro la lista de recetas y actualizo...
   
-  for(let i=0; i<listaRecetas.length; i++){
-    listaRecetas[i][1]= ingredientesFaltantes(listaRecetas[i][0],ingredientes);
-  } 
-  
-  // Ordeno la lista 
-  
-  var anteriorMayor=32;
-  var posOrdenar=listaRecetas.length-1;
-  const ordenar = [];
-  
-  for(let i=0; i<listaRecetas.length; i++){
-    var mayor = 0;
     for(let i=0; i<listaRecetas.length; i++){
-      if( (listaRecetas[i][3] - listaRecetas[i][1])<anteriorMayor && (listaRecetas[i][3] - listaRecetas[i][1])>mayor){
-        mayor= (listaRecetas[i][3] - listaRecetas[i][1]);
+      listaRecetas[i].diff= ingredientesFaltantes(listaRecetas[i].ingredientes,ingredientes);
+    } 
+    
+    // Ordeno la lista 
+    
+    var anteriorMayor=32;
+    var posOrdenar=listaRecetas.length-1;
+    const ordenar = [];
+    
+    for(let i=0; i<listaRecetas.length; i++){
+      var mayor = 0;
+      for(let i=0; i<listaRecetas.length; i++){
+        if( (listaRecetas[i].ingredientes.length - listaRecetas[i].diff)<anteriorMayor && (listaRecetas[i].ingredientes.length - listaRecetas[i].diff)>mayor){
+          mayor= (listaRecetas[i].ingredientes.length - listaRecetas[i].diff);
+        }
+      }
+      anteriorMayor=mayor;
+      for(let i=0; i<listaRecetas.length; i++){
+        if(mayor==(listaRecetas[i].ingredientes.length - listaRecetas[i].diff)&&posOrdenar>=0){
+          ordenar[posOrdenar]=listaRecetas[i].pasos;
+          posOrdenar--;
+        }
       }
     }
-    anteriorMayor=mayor;
-    for(let i=0; i<listaRecetas.length; i++){
-      if(mayor==(listaRecetas[i][3] - listaRecetas[i][1])&&posOrdenar>=0){
-        ordenar[posOrdenar]={nombre:listaRecetas[i][2],pasos:listaRecetas[4]};
-        posOrdenar--;
-      }
-    }
-  }
-  return ordenar;
+    return ordenar;
   }
