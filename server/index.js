@@ -7,11 +7,6 @@ const tortillaPapa = {nombre: "Tortilla de Papa", ingredientes: [0,3], pasos: "p
 const galletitasManteca = {nombre:"Galletitas de Manteca", ingredientes:[0,1,2,4], pasos:"pasos galletitas", faltantes: 0};
 const purePapa = {nombre:"Pure de Papa", ingredientes:[2,3,4], pasos:"pasos pure", faltantes: 0};
 const listaRecetas = [bizcocho,tortillaPapa,galletitasManteca,purePapa];
-/*const listaRecetas = [[bizcocho.ingredientes, 0, bizcocho.nombre,2, bizcocho.pasosASeguir],
- [tortillaPapa.ingredientes, 0, tortillaPapa.nombre,2,tortillaPapa.pasosASeguir],
-  [galletitasManteca.ingredientes, 0, galletitasManteca.nombre,4,galletitasManteca.pasosASeguir],
-   [purePapa.ingredientes, 0, purePapa.nombre,3,purePapa.pasosASeguir]];*/
-   
 // Código para importar el módulo 'bd' que maneja la conexión y las consultas a la BBDD (Está comentado para que no falle si no está corriendo el servidor MySQL)
 //const db = require('./../database/db');
 
@@ -24,27 +19,6 @@ app.post('/obtenerRecetas', (req, res) => {
   let recetas = ordenarRecetas(ingredientesUsuario);
   
   res.json({recetas});
-
-
-  // Código para obtener el saludo usando los datos guardados en la BBDD
-  // Ustedes deben reemplazar este código por el suyo, según las necesidades de su aplicación
-  /* 
-  db.returnGreetingFromDB(name)
-
-    .then((greeting) => {
-      if (greeting) {
-        console.log(greeting);
-        res.json({ greeting });
-      } else {
-        res.status(500).json({ error: 'Internal Server Error' });
-      }
-    })
-
-    .catch((error) => {
-      console.error('Error:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    });
-  */
 });
 // Inicializa la aplicación web e imprime un mensaje en la consola indicando el puerto de escucha
 app.listen(port, () => { 
