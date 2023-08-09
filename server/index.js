@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const port = 5000; // Puerto de la APP Web
 
-const bizcocho = {nombre:"Bizcocho", ingredientes: [0,1], pasos: "pasos bizcocho", diff: 0};
-const tortillaPapa = {nombre: "Tortilla de Papa", ingredientes: [0,3], pasos: "pasos tortilla", diff: 0};
-const galletitasManteca = {nombre:"Galletitas de Manteca", ingredientes:[0,1,2,4], pasos:"pasos galletitas", diff: 0};
-const purePapa = {nombre:"Pure de Papa", ingredientes:[2,3,4], pasos:"pasos pure", diff: 0};
+const bizcocho = {nombre:"Bizcocho", ingredientes: [0,1], pasos: "pasos bizcocho", faltantes: 0};
+const tortillaPapa = {nombre: "Tortilla de Papa", ingredientes: [0,3], pasos: "pasos tortilla", faltantes: 0};
+const galletitasManteca = {nombre:"Galletitas de Manteca", ingredientes:[0,1,2,4], pasos:"pasos galletitas", faltantes: 0};
+const purePapa = {nombre:"Pure de Papa", ingredientes:[2,3,4], pasos:"pasos pure", faltantes: 0};
 const listaRecetas = [bizcocho,tortillaPapa,galletitasManteca,purePapa];
 /*const listaRecetas = [[bizcocho.ingredientes, 0, bizcocho.nombre,2, bizcocho.pasosASeguir],
  [tortillaPapa.ingredientes, 0, tortillaPapa.nombre,2,tortillaPapa.pasosASeguir],
@@ -51,44 +51,28 @@ app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
 
-function ingredientesFaltantes(receta, busqueda){
-  var cantIngFaltantes=0;
-  for(let i = 0; i<receta.length; i++){
-    for(let h = 0; h<busqueda.length; h++){
-      if(receta[i]===busqueda[h]){
-        cantIngFaltantes++
-      }
-    }	
-  }
-  return cantIngFaltantes;
-  }
-  
-  function ordenarRecetas(ingredientes){	// Recorro la lista de recetas y actualizo...
-  
-    for(let i=0; i<listaRecetas.length; i++){
-      listaRecetas[i].diff= ingredientesFaltantes(listaRecetas[i].ingredientes,ingredientes);
-    } 
-    
-    // Ordeno la lista 
-    
-    var anteriorMayor=32;
-    var posOrdenar=listaRecetas.length-1;
-    const ordenar = [];
-    
-    for(let i=0; i<listaRecetas.length; i++){
-      var mayor = 0;
-      for(let i=0; i<listaRecetas.length; i++){
-        if( (listaRecetas[i].ingredientes.length - listaRecetas[i].diff)<anteriorMayor && (listaRecetas[i].ingredientes.length - listaRecetas[i].diff)>mayor){
-          mayor= (listaRecetas[i].ingredientes.length - listaRecetas[i].diff);
-        }
-      }
-      anteriorMayor=mayor;
-      for(let i=0; i<listaRecetas.length; i++){
-        if(mayor==(listaRecetas[i].ingredientes.length - listaRecetas[i].diff)&&posOrdenar>=0){
-          ordenar[posOrdenar]=listaRecetas[i].pasos;
-          posOrdenar--;
-        }
+function ingredientesFaltantes(ingredientes_receta, ingredientes_usuario){
+  var cantIngFaltantes=ingredientes_receta.length; 
+  //Por cada ingrediente de la receta
+  for(let i = 0; i<ingredientes_receta.length; i++){
+    //Por cada ingrediente del usuario
+    for(let h = 0; h<ingredientes_usuario.length; h++){
+      if(ingredientes_receta[i]===ingredientes_usuario[h]){
+        cantIngFaltantes--;
       }
     }
-    return ordenar;
   }
+  return cantIngFaltantes;
+}
+  
+function ordenarRecetas(ingredientes_usuario){	
+  //Por cada receta calculo cuantos ingredientes le faltan
+  listaRecetas.forEach(receta => {
+    receta.faltantes = ingredientesFaltantes(receta.ingredientes, ingredientes_usuario)
+  });
+
+  console.log(listaRecetas)
+  
+  // Ordeno la lista y la devuelvo
+  return listaRecetas.sort(function(a,b) {return a.faltantes - b.faltantes})
+}

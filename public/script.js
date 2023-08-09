@@ -40,7 +40,7 @@ submitBtn.addEventListener('click', () => {
 }) // Luego de enviar la petición, se espera a que el servidor responda
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se obtiene el saludo y se muestra en pantalla
-    outputDiv.textContent = data.recetas;
+    outputDiv.textContent = data.recetas[0].nombre;
     /*$("#output").html("")
     for(let receta of recetas){
       let recetaTexto=""
