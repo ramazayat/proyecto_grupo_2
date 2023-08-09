@@ -1,6 +1,7 @@
 const submitBtn = document.getElementById('submitBtn');
 const outputDiv = document.getElementById('output');
 const ingredientesUsuario=[];
+const listaRecetas = [bizcocho,tortillaPapa,galletitasManteca,purePapa];
 function ingrediente_click(idIngrediente){
   // Obtener el checkbox por su id
   var checkbox = document.getElementById(idIngrediente);
@@ -36,11 +37,14 @@ submitBtn.addEventListener('click', () => {
   headers: {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({ ingredientesUsuario }) // los ingredientes del usuario se envía en el body de la petición
+  body: JSON.stringify({ ingredientesUsuario }) // Los ingredientes del usuario se envía en el body de la petición
 }) // Luego de enviar la petición, se espera a que el servidor responda
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
-    outputDiv.textContent = data.recetas[0].nombre; //HAY QUE HACER UN FOR PARA QUE RECORRA TODAS LAS RECETAS
+    outputDiv.textContent = "";
+    for(let i = 0; i<listaRecetas.length; i++){
+      outputDiv.textContent += data.recetas[i].nombre; //HAY QUE HACER UN FOR PARA QUE RECORRA TODAS LAS RECETAS
+    }
     /*$("#output").html("")
     for(let receta of recetas){
       let recetaTexto=""
