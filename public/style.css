@@ -5,7 +5,7 @@ body{
 
 #Menu{
     background-color: #efe0cc;  
-    padding: 0.5% 1% ;
+    
     position: sticky;
     top:0;
     border-radius: 1em;
@@ -22,18 +22,19 @@ body{
 }
 
 #KEKO{
-    font-family: cooper std;
+    padding: 0% 5% 0% 1%;
+    font-family: Argentum Sans Medium;
     font-size: 2.5em;
     color: #502314;
     display: inline-block;
-    margin-bottom: -2%;
 }
 
 
 #slogan{
+    padding: 0.5% 1% 0% 0%;
     display: inline-block;
     font-size: 2em;
-    font-family: cooper std;
+    font-family: Argentum Sans Medium;
     color: #502314;
 }
 
@@ -43,28 +44,23 @@ body{
     float: right;
 }
 
-#exp{
-    color: #502314;
-}
-
 .inline{
     display: inline;
 }
 
 .butt{
-    margin: 1% 1% 0%;
+    margin: 1%;
     padding: 0.5%;
     border-radius: 5em;
     height: 2.5em;
     width: 7em;
     text-align: center;
     cursor:  pointer;
-    font-family: cooper std;
-  
+    font-family:Argentum Sans Medium;
 }
 
 .butt-menu{
-    margin: 1% 1% 0%;
+   
     border-radius: 5em;
     height: 3.5em;
     width: 8em;
@@ -73,8 +69,7 @@ body{
     background-color: #502314;
     color: #f5ebdc;
     border: #502314;
-    font-family: cooper std;
-    margin-top: -1em;
+    font-family: Argentum Sans Medium;
 }
 
 .butt-agrandar:hover{
@@ -95,10 +90,11 @@ body{
 }
 
 #exp{
+    font-family: Argentum Sans Medium;
+    color: #502314;
     font-size: 1.75em;
     padding: 1% 1% 0%;
     margin: 1% 1% 0%;
-    font-family: cooper std;
 }
 
 #ingredientes{
@@ -141,7 +137,7 @@ body{
 }
 
 #ingredientes label{
-    font-family: cooper std;
+    font-family: Argentum Sans Medium;
     font-size: 1em;
     color:#502314;
     cursor: pointer;
@@ -159,14 +155,13 @@ body{
 .presentacion{
     margin: 1em;
     padding: 1em;
-    font-size: 1.2em;
     width: 50%;
     height: 100%;
     display: inline-block;
     
 }
 
-#h_nmr{
+#nuestrasMejoresRecetas{
     font-size: 1.75em;
     margin: 2em 0 0 2em;
 }
@@ -175,10 +170,11 @@ body{
     margin: 2% 1% 1% 10%;
 }
 
-.titulitos{  
+.titulitos{ 
+    font-family: Argentum Sans Medium; 
     font-size: 2em;
-    font-family: cooper std;
     color: #502314;
+    text-decoration: none;
 }
 
 #ContCarrusel{
@@ -225,11 +221,11 @@ body{
     top: 5%;
 }
 
-.titulitos2{  
+.titulitos-NMR{  
     background-color: #efe0cc;
     margin: 0em;
-    font-size: 2em;
-    font-family: cooper std;
+    font-size: 2.5em;
+    font-family: Argentum Sans Medium;
     color: #502314;
     text-align: center;
     border-radius: 1em;
@@ -258,7 +254,7 @@ body{
     margin: 0;
     font-size: 1.5em;
     color: #502314;
-    font-family: cooper std ;
+    font-family: Argentum Sans Medium;
     padding: 1em;
 }
 

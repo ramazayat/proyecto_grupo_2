@@ -41,10 +41,11 @@ submitBtn.addEventListener('click', () => {
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
     //outputDiv.textContent = "";
+    
     let textContent = "";
-    for(let i = 0; i<data.recetas.length; i++){
+    for(let i = 0; i<data.recetas.length; i++){//recorre la lista de recetas para que se muestren todas
       textContent += "<div>";
-      textContent += data.recetas[i].nombre; //HAY QUE HACER UN FOR PARA QUE RECORRA TODAS LAS RECETAS
+      textContent += data.recetas[i].nombre; 
       textContent += "</div>";
     }
     $("#output").html(textContent);
