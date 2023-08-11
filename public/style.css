@@ -171,8 +171,11 @@ body{
     margin: 2em 0 0 2em;
 }
 
+.respuestas{
+    margin: 2% 1% 1% 10%;
+}
+
 .titulitos{  
-    margin: 0em;
     font-size: 2em;
     font-family: cooper std;
     color: #502314;
