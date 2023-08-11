@@ -44,9 +44,9 @@ submitBtn.addEventListener('click', () => {
     
     let textContent = "";
     for(let i = 0; i<data.recetas.length; i++){//recorre la lista de recetas para que se muestren todas
-      textContent += "<div>";
+      textContent += "<div><a href='recetas.html'>";
       textContent += data.recetas[i].nombre; 
-      textContent += "</div>";
+      textContent += "</a></div>";
     }
     $("#output").html(textContent);
     
