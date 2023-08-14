@@ -5,7 +5,6 @@ body{
 
 #Menu{
     background-color: #efe0cc;  
-    
     position: sticky;
     top:0;
     border-radius: 1em;
@@ -20,10 +19,13 @@ body{
     color: #f5ebdc ;
     text-decoration: none;
 }
+ 
+.argentum{
+    font-family: Argentum Sans Medium;
+}
 
 #KEKO{
     padding: 0% 5% 0% 1%;
-    font-family: Argentum Sans Medium;
     font-size: 2.5em;
     color: #502314;
     display: inline-block;
@@ -34,7 +36,6 @@ body{
     padding: 0.5% 1% 0% 0%;
     display: inline-block;
     font-size: 2em;
-    font-family: Argentum Sans Medium;
     color: #502314;
 }
 
@@ -54,9 +55,7 @@ body{
     border-radius: 5em;
     height: 2.5em;
     width: 7em;
-    text-align: center;
     cursor:  pointer;
-    font-family:Argentum Sans Medium;
 }
 
 .butt-menu{
@@ -64,12 +63,10 @@ body{
     border-radius: 5em;
     height: 3.5em;
     width: 8em;
-    text-align: center;
     cursor:  pointer;
     background-color: #502314;
     color: #f5ebdc;
     border: #502314;
-    font-family: Argentum Sans Medium;
 }
 
 .butt-agrandar:hover{
@@ -90,7 +87,6 @@ body{
 }
 
 #exp{
-    font-family: Argentum Sans Medium;
     color: #502314;
     font-size: 1.75em;
     padding: 1% 1% 0%;
@@ -166,17 +162,29 @@ body{
     margin: 2em 0 0 2em;
 }
 
-.respuestas{
-    margin: 2% 1% 1% 10%;
+.sin-deco{
     text-decoration: none;
 }
 
+.respuestas{
+    margin: 2% 1% 1% 10%;
+   
+}
+
 .titulitos{ 
-    font-family: Argentum Sans Medium; 
     font-size: 2em;
     color: #502314;
-    text-decoration: none;
 }
+
+.marginleft{
+    margin-left: 3%;
+}
+
+.nombre-receta{ 
+    font-size: 3.5em;
+    color: #502314;
+}
+
 
 #ContCarrusel{
     margin: 3% 15%;
@@ -222,13 +230,16 @@ body{
     top: 5%;
 }
 
+.center{
+    text-align: center;
+}
+
 .titulitos-NMR{  
     background-color: #efe0cc;
     margin: 0em;
     font-size: 2.5em;
     font-family: Argentum Sans Medium;
     color: #502314;
-    text-align: center;
     border-radius: 1em;
     padding: 0.3em;
 }
@@ -270,10 +281,6 @@ body{
 #textarea{
     resize:none;
     width: 20em;
-}
-
-.preguntas{
-    margin-left: 1em;
 }
 
 .controls{
