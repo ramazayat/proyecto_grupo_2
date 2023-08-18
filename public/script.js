@@ -36,17 +36,19 @@ submitBtn.addEventListener('click', () => {
   headers: {
     'Content-Type': 'application/json'
   },
+  
   body: JSON.stringify({ ingredientesUsuario }) // Los ingredientes del usuario se envía en el body de la petición
 }) // Luego de enviar la petición, se espera a que el servidor responda
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
     //outputDiv.textContent = "";
-    
+  
     let textContent = "";
     for(let i = 0; i<data.recetas.length; i++){//recorre la lista de recetas para que se muestren todas
-      textContent += "<div><a href='recetas.html'>";
-      textContent += data.recetas[i].nombre; 
-      textContent += "</a></div>";
+      //textContent += "<div id=" + data.recetas[i].id +  "onclick='traerReceta()'>";
+      textContent += `<div onclick="traerReceta(${data.recetas[i].id})">`;
+      textContent += data.recetas[i].nombre;
+      textContent += "</div>";
     }
     $("#output").html(textContent);
     
@@ -62,3 +64,12 @@ submitBtn.addEventListener('click', () => {
     console.error('Error:', error);
   });
   })
+  submitBtn.addEventListener('click', () => {
+    fetch('/obtenerRecetas', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ ingredientesUsuario }) 
+  }) 
+})

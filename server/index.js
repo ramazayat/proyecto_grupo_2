@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 const port = 5000; // Puerto de la APP Web
 
-const bizcocho = {nombre:"Bizcocho", ingredientes: [0,1], pasos: "pasos bizcocho", faltantes: 0};
-const tortillaPapa = {nombre: "Tortilla de Papa", ingredientes: [0,3], pasos: "pasos tortilla", faltantes: 0};
-const galletitasManteca = {nombre:"Galletitas de Manteca", ingredientes:[0,1,2,4], pasos:"pasos galletitas", faltantes: 0};
-const purePapa = {nombre:"Pure de Papa", ingredientes:[2,3,4], pasos:"pasos pure", faltantes: 0};
+const bizcocho = {nombre:"Bizcocho", ingredientes: [0,1], pasos: "pasos bizcocho", faltantes: 0, id:1};
+const tortillaPapa = {nombre: "Tortilla de Papa", ingredientes: [0,3], pasos: "pasos tortilla", faltantes: 0, id:2};
+const galletitasManteca = {nombre:"Galletitas de Manteca", ingredientes:[0,1,2,4], pasos:"pasos galletitas", faltantes: 0, id:3};
+const purePapa = {nombre:"Pure de Papa", ingredientes:[2,3,4], pasos:"pasos pure", faltantes: 0, id:4};
 const listaRecetas = [bizcocho,tortillaPapa,galletitasManteca,purePapa];
 // Código para importar el módulo 'bd' que maneja la conexión y las consultas a la BBDD (Está comentado para que no falle si no está corriendo el servidor MySQL)
 //const db = require('./../database/db');
@@ -44,9 +44,11 @@ function ordenarRecetas(ingredientes_usuario){
   listaRecetas.forEach(receta => {
     receta.faltantes = ingredientesFaltantes(receta.ingredientes, ingredientes_usuario)
   });
-
-  console.log(listaRecetas)
   
   // Ordeno la lista y la devuelvo
   return listaRecetas.sort(function(a,b) {return a.faltantes - b.faltantes})
+}
+
+function traerReceta(id){
+
 }
