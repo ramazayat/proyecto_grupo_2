@@ -139,8 +139,14 @@ body{
     cursor: pointer;
 }
 
+.recetaSalida{
+    border-radius: 1em;
+    padding: 1%;
+    margin: 1% 1% 0%;
+    background-color: #efe0cc;
+}
 
-#encuesta-container{
+.encuesta-container{
     display: flex;
     border-radius: 1em;
     padding: 1%;
@@ -174,6 +180,12 @@ body{
 .titulitos{ 
     font-size: 2em;
     color: #502314;
+}
+
+.titulitos3{ 
+    font-size: 2em;
+    color: #502314;
+    display: block;
 }
 
 .marginleft{

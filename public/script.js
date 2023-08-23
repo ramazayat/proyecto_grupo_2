@@ -45,9 +45,14 @@ submitBtn.addEventListener('click', () => {
   
     let textContent = "";
     for(let i = 0; i<data.recetas.length; i++){//recorre la lista de recetas para que se muestren todas
-      //textContent += "<div id=" + data.recetas[i].id +  "onclick='traerReceta()'>";
-      textContent += `<div onclick="traerReceta(${data.recetas[i].id})">`;
-      textContent += data.recetas[i].nombre;
+      //onclick="traerReceta(${data.recetas[i].id})
+      textContent += `<div class="recetaSalida">`;
+      textContent += `<div class="titulitos3 argentum" >`;
+      textContent +=  data.recetas[i].nombre;
+      textContent += "</div>";
+      textContent += "<div>";
+      textContent += data.recetas[i].pasos;
+      textContent += "</div>";
       textContent += "</div>";
     }
     $("#output").html(textContent);
@@ -64,12 +69,3 @@ submitBtn.addEventListener('click', () => {
     console.error('Error:', error);
   });
   })
-  submitBtn.addEventListener('click', () => {
-    fetch('/obtenerRecetas', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ ingredientesUsuario }) 
-  }) 
-})
