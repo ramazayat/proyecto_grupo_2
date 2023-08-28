@@ -12,7 +12,6 @@ const connection = mysql.createConnection({
 
 connection.connect((err) =>{
   if (err) throw (err)
-  console.log('funciona :D')
 })
 
 // Ejemplo de obtención de saludo desde la base de datos
