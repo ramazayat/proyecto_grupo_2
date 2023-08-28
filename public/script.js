@@ -40,7 +40,7 @@ submitBtn.addEventListener('click', () => {
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
     //outputDiv.textContent = "";
- 
+
     let textContent = "";
     for(let i = 0; i<data.recetas.length; i++){//recorre la lista de recetas para que se muestren todas
       //onclick="traerReceta(${data.recetas[i].id})
@@ -63,7 +63,7 @@ submitBtn.addEventListener('click', () => {
           }
         }
         if (tieneTodosLosIngredientes) {
-          textContent += `<p class="enviar todosIng"> Tenés todos los ingredientes.</p>`;
+          textContent += `<p class="enviar todosIng inline"> Tenés todos los ingredientes.</p>`;
         }
         textContent += "</div>";
         textContent += "<div>";
@@ -71,6 +71,7 @@ submitBtn.addEventListener('click', () => {
         textContent += "</div>";
         textContent += "</div>";
       }
+
     }
     $("#output").html(textContent);
     

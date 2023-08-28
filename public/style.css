@@ -146,6 +146,12 @@ body{
     cursor: pointer;
 }
 
+.todosIng{
+    margin-left: 1%;
+    padding: 0.5%;
+    border-radius: 1.5em;
+}
+
 .recetaSalida{
     border-radius: 1em;
     padding: 1%;
@@ -175,18 +181,6 @@ body{
     margin: 2em 0 0 2em;
 }
 
-.todosIng{
-    font-size: 1em;
-    padding: 0.5%;
-    display: inline;
-    border-radius: 1em;
-    margin-left: 1%;
-}
-
-.sin-deco{
-    text-decoration: none;
-}
-
 .respuestas{
     margin: 2% 1% 1% 10%;
    
@@ -200,15 +194,7 @@ body{
 .titulitos3{ 
     font-size: 2em;
     color: #502314;
-}
-
-.marginleft{
-    margin-left: 3%;
-}
-
-.nombre-receta{ 
-    font-size: 3.5em;
-    color: #502314;
+    text-decoration: none;
 }
 
 
