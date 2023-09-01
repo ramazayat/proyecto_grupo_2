@@ -18,7 +18,6 @@ app.use(express.json());  // Indica que se usarán datos en formato JSON en las 
 app.post('/obtenerRecetas', (req, res) => { 
   const { ingredientesUsuario } = req.body;
   let recetas = ordenarRecetas(ingredientesUsuario);
-  
   res.json({recetas});
 });
 // Inicializa la aplicación web e imprime un mensaje en la consola indicando el puerto de escucha

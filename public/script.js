@@ -1,6 +1,8 @@
 const submitBtn = document.getElementById('submitBtn');
 const outputDiv = document.getElementById('output');
 const ingredientesUsuario=[];
+const listaIngredientes = {0: "Huevo", 1: "Harina", 2: "Leche", 3:"Papa", 4: "Manteca", 5: "Cerdo", 6: "Pan rallado", 7:"Carne", 8:"Pollo", 9:"Pescado", 10 : "Salsa de tomate", 11: "Lechuga", 12: "Queso", 13: "Salsa César", 14: "Crema", 15: "Levadura", 16: "Tomate", 17: "Salsa de soja", 18: "Cacao", 19: "Palta", 20: "Manzana", 21: "Banana", 22: "Chips de chocolate", 23: "Arroz", 24: "Brócoli", 25: "Champiñones", 26: "Espinaca", 27: "Frutilla", 28: "Lentejas", 29: "Limón", 30: "Langostinos", 31: "Melón"} 
+
 function ingrediente_click(idIngrediente){
   // Obtener el checkbox por su id
   var checkbox = document.getElementById(idIngrediente);
@@ -52,7 +54,7 @@ submitBtn.addEventListener('click', () => {
         textContent += `</p>`;
         let coincidencias = 0;
         let tieneTodosLosIngredientes = false;
-        
+        console.log(data.recetas[i].ingredientes)
         for (const ingre of ingredientesUsuario) {
           if (data.recetas[i].ingredientes.includes(ingre)) {
             coincidencias++;
@@ -66,7 +68,20 @@ submitBtn.addEventListener('click', () => {
           textContent += `<p class="enviar todosIng inline"> Tenés todos los ingredientes.</p>`;
         }
         textContent += "</div>";
-        textContent += "<div>";
+        textContent += `<div class= "inline argentum">`;
+        textContent += `<p>Ingredientes: </p>`;
+        textContent += `<ul >`;
+        
+       
+        for(let ingrediente of data.recetas[i].ingredientes){
+          let name = listaIngredientes[ingrediente];
+          textContent += "<li>";
+          textContent += name;
+          textContent += "</li>";
+        }    
+        textContent += "</ul>";
+        textContent += "</div>";
+        textContent += `<div class= "inline argentum">`;
         textContent += data.recetas[i].pasos;
         textContent += "</div>";
         textContent += "</div>";
