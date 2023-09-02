@@ -1,6 +1,8 @@
 const submitBtn = document.getElementById('submitBtn');
 const outputDiv = document.getElementById('output');
 const ingredientesUsuario=[];
+const listaIngredientes = {0: "Huevo", 1: "Harina", 2: "Leche", 3:"Papa", 4: "Manteca", 5: "Cerdo", 6: "Pan rallado", 7:"Carne", 8:"Pollo", 9:"Pescado", 10 : "Salsa de tomate", 11: "Lechuga", 12: "Queso", 13: "Salsa César", 14: "Crema", 15: "Levadura", 16: "Tomate", 17: "Salsa de soja", 18: "Cacao", 19: "Palta", 20: "Manzana", 21: "Banana", 22: "Chips de chocolate", 23: "Arroz", 24: "Brócoli", 25: "Champiñones", 26: "Espinaca", 27: "Frutilla", 28: "Lentejas", 29: "Limón", 30: "Langostinos", 31: "Melón"} 
+
 function ingrediente_click(idIngrediente){
   // Obtener el checkbox por su id
   var checkbox = document.getElementById(idIngrediente);
@@ -42,48 +44,69 @@ submitBtn.addEventListener('click', () => {
     //outputDiv.textContent = "";
 
     let textContent = "";
-    for(let i = 0; i<data.recetas.length; i++){//recorre la lista de recetas para que se muestren todas
-      //onclick="traerReceta(${data.recetas[i].id})
-      if(data.recetas[i].faltantes !== data.recetas[i].ingredientes.length){
-        textContent += `<div class="recetaSalida">`;
-        textContent += `<div>`;
-        textContent += `<p class="titulitos3 argentum inline" >`;
-        textContent +=  data.recetas[i].nombre;
-        textContent += `</p>`;
-        let coincidencias = 0;
-        let tieneTodosLosIngredientes = false;
-        
-        for (const ingre of ingredientesUsuario) {
-          if (data.recetas[i].ingredientes.includes(ingre)) {
-            coincidencias++;
-            if (coincidencias === data.recetas[i].ingredientes.length) {
-              tieneTodosLosIngredientes = true;
-              break; // Salir del bucle si se encuentran todos los ingredientes
-            }
-          }
-        }
-        if (tieneTodosLosIngredientes) {
-          textContent += `<p class="enviar todosIng inline"> Tenés todos los ingredientes.</p>`;
-        }
-        textContent += "</div>";
-        textContent += "<div>";
-        textContent += data.recetas[i].pasos;
-        textContent += "</div>";
-        textContent += "</div>";
-      }
-
-    }
-    $("#output").html(textContent);
+    textContent += `<div class="accordion recetaSalida mi-acordion">`;
     
-    /*$("#output").html("")
-    for(let receta of recetas){
-      let recetaTexto=""
-      vedetexto+="<div class>" + recetas.nombre
-      recetastext+="</div>"
-      $("#output").oppend(recetaTexto) 
-    }*/
+    data.recetas.forEach((receta, i) => {
+      textContent += `
+        <div class=" accordion-item mi-acc-item">
+      `;
+      if (receta.faltantes !== receta.ingredientes.length) {
+        textContent += `
+          <div class=" accordion-header">
+            <button class="accordion-button collapsed inline" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${i}" aria-expanded="true" aria-controls="collapse-${i}">
+              <p class="inline argentum titulitos4">${receta.nombre}</p>`
+            let coincidencias = 0;
+            let tieneTodosLosIngredientes = false;
+            for (const ingre of ingredientesUsuario) {
+              if (data.recetas[i].ingredientes.includes(ingre)) {
+                coincidencias++;
+                if (coincidencias === data.recetas[i].ingredientes.length) {
+                  tieneTodosLosIngredientes = true;
+                  break; // Salir del bucle si se encuentran todos los ingredientes
+                }
+              }
+            }
+            if (tieneTodosLosIngredientes) {
+              textContent += `<div class="enviar todosIng inline dere"> Tenés todos los ingredientes.</div>`;
+            }
+          textContent += `</button>
+          </div>
+          <div id="collapse-${i}" class="accordion-collapse collapse" aria-labelledby="collapse-${i}">
+            <div class="accordion-body">
+              <div class=" ingredientesRecetas inline argentum">
+                <p  class="titulitos4">
+                Ingredientes: 
+                </p>
+                <ul>
+        `;
+        receta.ingredientes.forEach((ingrediente) => {
+          let name = listaIngredientes[ingrediente];
+          textContent += `
+                  <li class="argentum">${name}</li>
+          `;
+        });
+        textContent += `
+                </ul>
+              </div>
+              <div class="inline argentum pasos"> 
+                <p class="titulitos4"> 
+                  Pasos a seguir: 
+                </p>
+                ${receta.pasos}
+              </div>
+            </div>
+          </div>
+        
+        `;
+        }
+      });
+      textContent += `</div>`
+    $("#output").html(textContent);
   })
   .catch(error => { // Si hubo un error, se muestra en consola
     console.error('Error:', error);
   });
   })
+
+//preguntar como hacer que cierre, el border-radios, y centrar nombre rece.
+
