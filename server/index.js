@@ -39,7 +39,7 @@ function ingredientesFaltantes(ingredientes_receta, ingredientes_usuario){
   return cantIngFaltantes;
 }
 
-function ordenarRecetas(ingredientes_usuario){	
+function ordenarRecetas(ingredientes_usuario){  
   //Por cada receta calculo cuantos ingredientes le faltan
   listaRecetas.forEach(receta => {
     receta.faltantes = ingredientesFaltantes(receta.ingredientes, ingredientes_usuario)
@@ -47,4 +47,3 @@ function ordenarRecetas(ingredientes_usuario){
   
   // Ordeno la lista y la devuelvo
   return listaRecetas.sort(function(a,b) {return a.faltantes - b.faltantes})
-}
