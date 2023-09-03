@@ -43,65 +43,74 @@ submitBtn.addEventListener('click', () => {
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
     //outputDiv.textContent = "";
 
-    let textContent = "";
-    textContent += `<div class="accordion recetaSalida mi-acordion">`;
-    
-    data.recetas.forEach((receta, i) => {
-      textContent += `
-        <div class=" accordion-item mi-acc-item">
-      `;
-      if (receta.faltantes !== receta.ingredientes.length) {
-        textContent += `
-          <div class=" accordion-header">
-            <button class="accordion-button collapsed inline" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${i}" aria-expanded="true" aria-controls="collapse-${i}">
-              <p class="inline argentum titulitos4">${receta.nombre}</p>`
-            let coincidencias = 0;
-            let tieneTodosLosIngredientes = false;
-            for (const ingre of ingredientesUsuario) {
-              if (data.recetas[i].ingredientes.includes(ingre)) {
-                coincidencias++;
-                if (coincidencias === data.recetas[i].ingredientes.length) {
-                  tieneTodosLosIngredientes = true;
-                  break; // Salir del bucle si se encuentran todos los ingredientes
-                }
-              }
-            }
-            if (tieneTodosLosIngredientes) {
-              textContent += `<div class="enviar todosIng inline dere"> Tenés todos los ingredientes.</div>`;
-            }
-          textContent += `</button>
-          </div>
-          <div id="collapse-${i}" class="accordion-collapse collapse" aria-labelledby="collapse-${i}">
-            <div class="accordion-body">
-              <div class=" ingredientesRecetas inline argentum">
-                <p  class="titulitos4">
-                Ingredientes: 
-                </p>
-                <ul>
-        `;
-        receta.ingredientes.forEach((ingrediente) => {
-          let name = listaIngredientes[ingrediente];
-          textContent += `
-                  <li class="argentum">${name}</li>
-          `;
-        });
-        textContent += `
-                </ul>
-              </div>
-              <div class="inline argentum pasos"> 
-                <p class="titulitos4"> 
-                  Pasos a seguir: 
-                </p>
-                ${receta.pasos}
-              </div>
-            </div>
-          </div>
-        
-        `;
+    let textContent = `
+<div class="accordion recetaSalida mi-acordion">`;
+
+data.recetas.forEach((receta, i) => {
+  if (receta.faltantes !== receta.ingredientes.length) {
+    textContent += `
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button class="accordion-button inline" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${i}" aria-expanded="true" aria-controls="collapse-${i}">
+          <div class="inline argentum titulitos4">${receta.nombre}</div>`;
+
+    let coincidencias = 0;
+    let tieneTodosLosIngredientes = false;
+    for (const ingre of ingredientesUsuario) {
+      if (data.recetas[i].ingredientes.includes(ingre)) {
+        coincidencias++;
+        if (coincidencias === data.recetas[i].ingredientes.length) {
+          tieneTodosLosIngredientes = true;
+          break; // Salir del bucle si se encuentran todos los ingredientes
         }
-      });
-      textContent += `</div>`
-    $("#output").html(textContent);
+      }
+    }
+
+    if (tieneTodosLosIngredientes) {
+      textContent += `
+      <div class="enviar todosIng inline dere" div ingre>
+        Tenés todos los ingredientes.
+      </div>`;
+    }
+
+    textContent += `
+        </button>
+      </div>
+      <div id="collapse-${i}" class="accordion-collapse collapse" aria-labelledby="collapse-${i}">
+        <div class="accordion-body">
+          <div class="ingredientesRecetas inline argentum">
+            <p class="titulitos4">
+              Ingredientes:
+            </p>
+            <ul>`;
+
+    receta.ingredientes.forEach((ingrediente) => {
+      let name = listaIngredientes[ingrediente];
+      textContent += `
+              <li class="argentum">${name}</li>`;
+    });
+
+    textContent += `
+            </ul>
+          </div>
+          <div class="inline argentum pasos">
+            <p class="titulitos4">
+              Pasos a seguir:
+            </p>
+            ${receta.pasos}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }
+});
+
+textContent += `
+</div>`;
+
+$("#output").html(textContent);
+
+    console.log(textContent);
   })
   .catch(error => { // Si hubo un error, se muestra en consola
     console.error('Error:', error);

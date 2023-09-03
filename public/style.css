@@ -14,7 +14,6 @@ body{
 
 }
 
-
 #Menu a{ 
     color: #f5ebdc ;
     text-decoration: none;
@@ -32,14 +31,12 @@ body{
     display: inline-block;
 }
 
-
 #slogan{
     padding: 0.5% 1% 0% 0%;
     display: inline-block;
     font-size: 2em;
     color: #502314;
 }
-
 
 
 .dere{
@@ -52,7 +49,6 @@ body{
 
 .butt{
     margin: 1%;
-    padding: 0.5%;
     border-radius: 5em;
     height: 2.5em;
     width: 7em;
@@ -116,7 +112,6 @@ body{
     font-size: 1em;
 }
 
-
 #ingredientes input[type="checkbox"]{
    display: none;
 }
@@ -130,7 +125,6 @@ body{
     width: 1em;
     height: 1em;
 }
-
 
 #ingredientes [type="checkbox"]:checked + label::before{
     border: none;
@@ -190,15 +184,10 @@ body{
     color: #502314;
 }
 
-.accheader{
-    font-size: 1em;
-}
-
 .titulitos4{
     font-size: 1.5em;
     color: #502314;
     text-decoration: none;
-
 }
 
 .titulitos3{ 
@@ -206,7 +195,6 @@ body{
     color: #502314;
     text-decoration: none;
 }
-
 
 #ContCarrusel{
     margin: 3% 15%;
@@ -242,7 +230,6 @@ body{
 .TarjetaCarrusel{
     height: 100%;
 }
-
 
 
 
@@ -292,6 +279,10 @@ body{
     padding: 1em;
 }
 
+.accordion-header{
+    border-radius: 2em;
+}
+
 .accordion-body{
     margin: 0% 2.5%;
     border-radius: 1em;
@@ -300,7 +291,6 @@ body{
 }
 
 .accordion-button{
-    border-radius: 2em;
     background-color: transparent;
     outline: none;
     border: 2px solid #57200c;
@@ -316,8 +306,8 @@ body{
 }
 
 .accordion-button:is(.collapsed){
-    border-radius: 2em;
     border: none;
+    border-radius: 2em;
     color: #502314;
     box-shadow: none;
     background-color: #efe0cc;
@@ -328,12 +318,12 @@ body{
 }
   
 .accordion-item{
+    border-radius: 2em;
     border: none;
     box-shadow: none;
     background-color: transparent;
     color: #502314;
 }
-
 
 .ingredientesRecetas{
     width: 20%;
@@ -361,7 +351,6 @@ body{
     border: none;
     border-radius: 1em;
 }
-
 
 @media   (max-width: 800px) {
     #slogan{
