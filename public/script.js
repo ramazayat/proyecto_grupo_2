@@ -118,4 +118,3 @@ $("#output").html(textContent);
   })
 
 //preguntar como hacer que cierre, el border-radios, y centrar nombre rece.
-
