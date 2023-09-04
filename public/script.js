@@ -110,15 +110,17 @@ submitBtn.addEventListener('click', () => {
                     
                         for (let j = 0; j < receta.dificultad; j++) {
                             if(receta.dificultad==1 || receta.dificultad==2){
-                              textContent += `a<i class="fa-solid fa-spoon verde"> </i> `;
+
+                             
+                              textContent += `<i class="fa-solid fa-spoon verde"> </i> `;
                         }else if(receta.dificultad==3 || receta.dificultad==4){
-                          textContent += `b<i class="fa-solid fa-spoon amarillo"> </i> `;
+                          textContent += `<i class="fa-solid fa-spoon amarillo"> </i> `;
                         }else if(receta.dificultad==5){
-                          textContent += `c<i class="fa-solid fa-spoon rojo"> </i> `;
+                          textContent += `<i class="fa-solid fa-spoon rojo"> </i> `;
                         }
                       }
                         for (let j = 0; j < (5 - receta.dificultad); j++) {
-                            textContent += `d<i class="fa-solid fa-spoon"> </i> `;
+                            textContent += `<i class="fa-solid fa-spoon"> </i> `;
                         }
             `<br>
 
