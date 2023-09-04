@@ -41,63 +41,134 @@ submitBtn.addEventListener('click', () => {
 }) // Luego de enviar la petición, se espera a que el servidor responda
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
-    //outputDiv.textContent = "";
+    
 
-    let textContent = "";
-    for(let i = 0; i<data.recetas.length; i++){//recorre la lista de recetas para que se muestren todas
-      //onclick="traerReceta(${data.recetas[i].id})
-      if(data.recetas[i].faltantes !== data.recetas[i].ingredientes.length){
-        textContent += `<div class="recetaSalida">`;
-        textContent += `<div>`;
-        textContent += `<p class="titulitos3 argentum inline" >`;
-        textContent +=  data.recetas[i].nombre;
-        textContent += `</p>`;
-        let coincidencias = 0;
-        let tieneTodosLosIngredientes = false;
-        console.log(data.recetas[i].ingredientes)
-        for (const ingre of ingredientesUsuario) {
-          if (data.recetas[i].ingredientes.includes(ingre)) {
-            coincidencias++;
-            if (coincidencias === data.recetas[i].ingredientes.length) {
-              tieneTodosLosIngredientes = true;
-              break; // Salir del bucle si se encuentran todos los ingredientes
-            }
-          }
-        }
-        if (tieneTodosLosIngredientes) {
-          textContent += `<p class="enviar todosIng inline"> Tenés todos los ingredientes.</p>`;
-        }
-        textContent += "</div>";
-        textContent += `<div class= "inline argentum">`;
-        textContent += `<p>Ingredientes: </p>`;
-        textContent += `<ul >`;
+    let textContent = ``
+    textContent +=
+        `<div class="accordion recetaSalida">`;
+    
+    data.recetas.forEach((receta, i) => {
+        if (receta.faltantes !== receta.ingredientes.length) {
+            textContent += `
+              <div class="accordion-item">
+                <div class="accordion-header">
+                  <button class="accordion-button inline" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${i}" aria-expanded="true" aria-controls="collapse-${i}">
+                    <div class="inline argentum titulitos4">${receta.nombre}</div>`;
+
+                      let coincidencias = 0;
+                      let tieneTodosLosIngredientes = false;
+                      for (const ingre of ingredientesUsuario) {
+                          if (data.recetas[i].ingredientes.includes(ingre)) {
+                              coincidencias++;
+                              if (coincidencias === data.recetas[i].ingredientes.length) {
+                                  tieneTodosLosIngredientes = true;
+                                  break; // Salir del bucle si se encuentran todos los ingredientes
+                              }
+                          }
+                      }
+
+                      if (tieneTodosLosIngredientes) {
+                          textContent += `
+                            <div class="enviar todosIng  dere">
+                              Tenés todos los ingredientes.
+                            </div>`;
+                      }
+
+            textContent += `
+                  </button>
+                </div>
         
-       
-        for(let ingrediente of data.recetas[i].ingredientes){
-          let name = listaIngredientes[ingrediente];
-          textContent += "<li>";
-          textContent += name;
-          textContent += "</li>";
-        }    
-        textContent += "</ul>";
-        textContent += "</div>";
-        textContent += `<div class= "inline argentum">`;
-        textContent += data.recetas[i].pasos;
-        textContent += "</div>";
-        textContent += "</div>";
-      }
+        
+                <div id="collapse-${i}" class="accordion-collapse collapse" aria-labelledby="collapse-${i}">
+                  <div class="accordion-body">
 
-    }
+                  <div class=" row">
+                  <div class=" col-2">
+                    <div class="ingredientesRecetas argentum">
+                        <p class="titulitos4">
+                          Ingredientes:
+                        </p>
+                        <ul>`;
+            receta.ingredientes.forEach((ingrediente) => {
+                let name = listaIngredientes[ingrediente];
+                textContent += `
+                                  <li class="argentum ">
+                                    ${name}
+                                  </li>`;
+            });
+            textContent += `
+                        </ul>
+
+                        
+                      </div>`
+
+            textContent += `
+                   <div id="dificulty">
+                          <div class="titulitos4 argentum">
+                            Dificultad: 
+                          </div>`
+                    
+                        for (let j = 0; j < receta.dificultad; j++) {
+                            if(receta.dificultad==1 || receta.dificultad==2){
+                              textContent += `a<i class="fa-solid fa-spoon verde"> </i> `;
+                        }else if(receta.dificultad==3 || receta.dificultad==4){
+                          textContent += `b<i class="fa-solid fa-spoon amarillo"> </i> `;
+                        }else if(receta.dificultad==5){
+                          textContent += `c<i class="fa-solid fa-spoon rojo"> </i> `;
+                        }
+                      }
+                        for (let j = 0; j < (5 - receta.dificultad); j++) {
+                            textContent += `d<i class="fa-solid fa-spoon"> </i> `;
+                        }
+            `<br>
+
+            
+                      </div>
+                      `
+                    
+                      const ingredientesNecesarios = receta.ingredientes;
+
+                      // Función para mostrar los ingredientes que faltan
+                      function mostrarIngredientesFaltantes(ingredientesNecesarios, ingredientesUsuario) {
+                        const ingredientesFaltantes = ingredientesNecesarios.filter(ingrediente => !ingredientesUsuario.includes(ingrediente));
+                      
+                        if (ingredientesFaltantes.length === 0) {
+                          console.log('Tienes todos los ingredientes necesarios para la receta.');
+                        } else {
+                          console.log('Te falta:');
+                          console.log(ingredientesFaltantes);
+                        }
+                      }
+
+                    
+                      
+                      // Llamar a la función para mostrar los ingredientes faltantes
+                      mostrarIngredientesFaltantes(ingredientesNecesarios, ingredientesUsuario);
+                      
+                      
+            textContent += `
+            
+                  </div>
+                  </div>`
+                  textContent += ` <div class="argentum pasos col-10">
+                    <p class="titulitos4">
+                      Pasos a seguir:
+                    </p>
+                    ${receta.pasos}
+                    </div>
+                  </div>
+                </div>
+              </div>
+      </div>`;
+        }
+    });
+    
+    
+    
     $("#output").html(textContent);
     
-    /*$("#output").html("")
-    for(let receta of recetas){
-      let recetaTexto=""
-      vedetexto+="<div class>" + recetas.nombre
-      recetastext+="</div>"
-      $("#output").oppend(recetaTexto) 
-    }*/
-  })
+    })
+  
   .catch(error => { // Si hubo un error, se muestra en consola
     console.error('Error:', error);
   });
