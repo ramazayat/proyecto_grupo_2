@@ -110,8 +110,6 @@ submitBtn.addEventListener('click', () => {
                     
                         for (let j = 0; j < receta.dificultad; j++) {
                             if(receta.dificultad==1 || receta.dificultad==2){
-
-                             
                               textContent += `<i class="fa-solid fa-spoon verde"> </i> `;
                         }else if(receta.dificultad==3 || receta.dificultad==4){
                           textContent += `<i class="fa-solid fa-spoon amarillo"> </i> `;
