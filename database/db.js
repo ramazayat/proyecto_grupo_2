@@ -18,21 +18,25 @@ connection.connect((err) =>{
 // Devuelve un 'promise' que resuelve con el saludo o se rechaza con un error (Eso se maneja en el código del servidor)
 
   // Fetching last name from the MySQL database
-  connection.query(
-    'SELECT * FROM keko.recetas',
-    (error, results) => {
-      if (error) {
-        console.error('Error:', error);
-         reject(error);
-      } else {
-        const lastName = results[0]?.last_name || 'Unknown';
-        const greeting = generateGreeting(name, lastName);
-         resolve(greeting);
-      }
-    }
-  );
-
+  function prueba(ingreUsua){
+    return new Promise((resolve, reject) => {
+      // Fetching last name from the MySQL database
+      connection.query(
+        'SELECT  id_receta, dificultad, nombre, group_concat(id_ingrediente) as ingredientes, pasos FROM ingredienteporreceta join recetas on ingredienteporreceta.id_receta = recetas.id where id_ingrediente in (?) group by recetas.id;',
+        [ingreUsua],
+        (error, results) => {
+          if (error) {
+            console.error('Error:', error);
+            reject(error);
+          } else {
+            console.log(results);
+            resolve(results);
+          }
+        }
+      );
+    });
+  }
 // Exporta las funciones que se quieran usar desde otros archivos
 module.exports = {
-  
+  prueba,
 };
