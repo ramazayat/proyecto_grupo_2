@@ -18,12 +18,12 @@ connection.connect((err) =>{
 // Devuelve un 'promise' que resuelve con el saludo o se rechaza con un error (Eso se maneja en el código del servidor)
 
   // Fetching last name from the MySQL database
-  function prueba(ingreUsua){
+  function obtenerRecetas(inputUser){
     return new Promise((resolve, reject) => {
       // Fetching last name from the MySQL database
       connection.query(
         'SELECT  id_receta, dificultad, nombre, group_concat(id_ingrediente) as ingredientes, pasos FROM ingredienteporreceta join recetas on ingredienteporreceta.id_receta = recetas.id where id_ingrediente in (?) group by recetas.id;',
-        [ingreUsua],
+        [inputUser],
         (error, results) => {
           if (error) {
             console.error('Error:', error);
@@ -38,5 +38,5 @@ connection.connect((err) =>{
   }
 // Exporta las funciones que se quieran usar desde otros archivos
 module.exports = {
-  prueba,
+  obtenerRecetas,
 };
