@@ -29,7 +29,6 @@ connection.connect((err) =>{
             console.error('Error:', error);
             reject(error);
           } else {
-            console.log(results);
             resolve(results);
           }
         }
