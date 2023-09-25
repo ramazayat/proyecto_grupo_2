@@ -8,6 +8,7 @@ const port = 5000; // Puerto de la APP Web
 //const purePapa = {nombre:"Pure de Papa",dificultad: 3, ingredientes:[2,3,4], pasos:"Para comenzar a hacer el pure de papa debemos pelar las papas y lavar, para luego proceder a cortarlas en cubos de tamaño mediano, 2 o 3 centímetros esta bien. Colocamos las papas cortas en una cacerola con aguara hervida y sal. Las cocinamos por aproximadamente 20 minutos, nos vamos a dar cuenta cuando esten lista ya que al intentar pincharlas con un tenedor los cubos se van a desarmar. Colamos las papas y procedemos a agregarle la manteca y la leche, revolvemos para homogenizar la mezcla y salpimentamos a gusto.", faltantes: 0, id:4};
 //const cesar = {nombre:"Cesar", dificultad: 4, ingredientes: [8,11,12,13], pasos: "Deshojar y trozar la lechuga con las manos. Baña las hojas de lechuga con el aderezo César. Agrega crutones (opcional) y queso parmesano espolvoreado encima. ¡Disfruta inmediatamente!", faltantes: 0, id:5};
 //const listaRecetas = [bizcocho,tortillaPapa,galletitasManteca,purePapa,cesar];
+
 // Código para importar el módulo 'bd' que maneja la conexión y las consultas a la BBDD (Está comentado para que no falle si no está corriendo el servidor MySQL)
 const db = require('./../database/db');
 
@@ -21,134 +22,8 @@ app.post('/obtenerRecetas', (req, res) => {
    
     ordenarRecetas(ingredientesUsuario, recetas);
     console.log(recetas);
-
-
-    recetas.forEach
-    let textContent = ``
-    textContent +=
-        `<div class="accordion recetaSalida">`;
-    
-    data.recetas.forEach((receta, i) => {
-        if (receta.faltantes !== receta.ingredientes.length) {
-            textContent += `
-              <div class="accordion-item">
-                <div class="accordion-header">
-                  <button class="accordion-button inline" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${i}" aria-expanded="true" aria-controls="collapse-${i}">
-                    <div class="inline argentum titulitos4">${receta.nombre}</div>`;
-
-                      let coincidencias = 0;
-                      let tieneTodosLosIngredientes = false;
-                      for (const ingre of ingredientesUsuario) {
-                          if (data.recetas[i].ingredientes.includes(ingre)) {
-                              coincidencias++;
-                              if (coincidencias === data.recetas[i].ingredientes.length) {
-                                  tieneTodosLosIngredientes = true;
-                                  break; // Salir del bucle si se encuentran todos los ingredientes
-                              }
-                          }
-                      }
-
-                      if (tieneTodosLosIngredientes) {
-                          textContent += `
-                            <div class="enviar todosIng  dere">
-                              Tenés todos los ingredientes.
-                            </div>`;
-                      }
-
-            textContent += `
-                  </button>
-                </div>
-        
-        
-                <div id="collapse-${i}" class="accordion-collapse collapse" aria-labelledby="collapse-${i}">
-                  <div class="accordion-body">
-
-                  <div class=" row">
-                  <div class=" col-2">
-                    <div class="ingredientesRecetas argentum">
-                        <p class="titulitos4">
-                          Ingredientes:
-                        </p>
-                        <ul>`;
-            receta.ingredientes.forEach((ingrediente) => {
-                let name = listaIngredientes[ingrediente];
-                textContent += `
-                                  <li class="argentum ">
-                                    ${name}
-                                  </li>`;
-            });
-            textContent += `
-                        </ul>
-
-                        
-                      </div>`
-
-            textContent += `
-                   <div id="dificulty">
-                          <div class="titulitos4 argentum">
-                            Dificultad: 
-                          </div>`
-                    
-                        for (let j = 0; j < receta.dificultad; j++) {
-                            if(receta.dificultad==1 || receta.dificultad==2){
-                              textContent += `<i class="fa-solid fa-spoon verde"> </i> `;
-                        }else if(receta.dificultad==3 || receta.dificultad==4){
-                          textContent += `<i class="fa-solid fa-spoon amarillo"> </i> `;
-                        }else if(receta.dificultad==5){
-                          textContent += `<i class="fa-solid fa-spoon rojo"> </i> `;
-                        }
-                      }
-                        for (let j = 0; j < (5 - receta.dificultad); j++) {
-                            textContent += `<i class="fa-solid fa-spoon"> </i> `;
-                        }
-            `<br>
-
-            
-                      </div>
-                      `
-                    
-                      const ingredientesNecesarios = receta.ingredientes;
-
-                      // Función para mostrar los ingredientes que faltan
-                      function mostrarIngredientesFaltantes(ingredientesNecesarios, ingredientesUsuario) {
-                        const ingredientesFaltantes = ingredientesNecesarios.filter(ingrediente => !ingredientesUsuario.includes(ingrediente));
-                      
-                        if (ingredientesFaltantes.length === 0) {
-                          console.log('Tienes todos los ingredientes necesarios para la receta.');
-                        } else {
-                          console.log('Te falta:');
-                          console.log(ingredientesFaltantes);
-                        }
-                      }
-
-                    
-                      
-                      // Llamar a la función para mostrar los ingredientes faltantes
-                      mostrarIngredientesFaltantes(ingredientesNecesarios, ingredientesUsuario);
-                      
-                      
-            textContent += `
-            
-                  </div>
-                  </div>`
-                  textContent += ` <div class="argentum pasos col-10">
-                    <p class="titulitos4">
-                      Pasos a seguir:
-                    </p>
-                    ${receta.pasos}
-                    </div>
-                  </div>
-                </div>
-              </div>
-      </div>`;
-        }
-    });
-    
-    
-    
-    $("#output").html(textContent);
+    res.json({recetas});
   })
-  res.json({recetas});
 });
 // Inicializa la aplicación web e imprime un mensaje en la consola indicando el puerto de escucha
 app.listen(port, () => { 

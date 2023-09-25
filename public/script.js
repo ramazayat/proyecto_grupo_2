@@ -42,12 +42,11 @@ submitBtn.addEventListener('click', () => {
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
     
-
     let textContent = ``
     textContent +=
         `<div class="accordion recetaSalida">`;
-    
-    data.recetas.forEach((receta, i) => {
+       data.recetas.forEach((receta, i) => {
+        console.log(receta)
         if (receta.faltantes !== receta.ingredientes.length) {
             textContent += `
               <div class="accordion-item">
@@ -126,7 +125,7 @@ submitBtn.addEventListener('click', () => {
                       </div>
                       `
                     
-                      const ingredientesNecesarios = receta.ingredientes;
+                     /* const ingredientesNecesarios = receta.ingredientes;
 
                       // Función para mostrar los ingredientes que faltan
                       function mostrarIngredientesFaltantes(ingredientesNecesarios, ingredientesUsuario) {
@@ -143,7 +142,7 @@ submitBtn.addEventListener('click', () => {
                     
                       
                       // Llamar a la función para mostrar los ingredientes faltantes
-                      mostrarIngredientesFaltantes(ingredientesNecesarios, ingredientesUsuario);
+                      mostrarIngredientesFaltantes(ingredientesNecesarios, ingredientesUsuario);*/
                       
                       
             textContent += `
