@@ -22,7 +22,8 @@ connection.connect((err) =>{
     return new Promise((resolve, reject) => {
       // Fetching last name from the MySQL database
       connection.query(
-        'SELECT  id_receta, dificultad, nombre, group_concat(id_ingrediente) as ingredientes, pasos FROM ingredienteporreceta join recetas on ingredienteporreceta.id_receta = recetas.id where id_ingrediente in (?) group by recetas.id;',
+        //la consulta muestra todas las recetas no importa si tenes o no algun ingrediente
+        'SELECT  id_receta, dificultad, nombre, group_concat(id_ingrediente) as ingredientes, pasos FROM ingredienteporreceta join recetas on ingredienteporreceta.id_receta = recetas.id group by recetas.id;',
         [inputUser],
         (error, results) => {
           if (error) {

@@ -19,7 +19,13 @@ app.post('/obtenerRecetas', (req, res) => {
   const { ingredientesUsuario } = req.body;
   //let recetas = ordenarRecetas(ingredientesUsuario);
   const recetas=db.obtenerRecetas(ingredientesUsuario).then((recetas) => {
-   
+    recetas.forEach(receta => {
+      let nueva_lista_ingredientes = [];
+      receta.ingredientes.split(',').forEach(ingrediente => {
+        nueva_lista_ingredientes.push(parseInt(ingrediente))
+      })
+      receta.ingredientes = nueva_lista_ingredientes
+    });
     ordenarRecetas(ingredientesUsuario, recetas);
     console.log(recetas);
     res.json({recetas});
@@ -29,6 +35,7 @@ app.post('/obtenerRecetas', (req, res) => {
 app.listen(port, () => { 
   console.log(`Server running on http://localhost:${port}`);
 });
+ //Ingredientes como string pasarlos a lista.
 
 function ingredientesFaltantes(ingredientes_receta, ingredientes_usuario){
   var cantIngFaltantes=ingredientes_receta.length; 

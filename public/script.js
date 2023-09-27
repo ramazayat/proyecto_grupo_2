@@ -57,7 +57,7 @@ submitBtn.addEventListener('click', () => {
                       let coincidencias = 0;
                       let tieneTodosLosIngredientes = false;
                       for (const ingre of ingredientesUsuario) {
-                          if (data.recetas[i].ingredientes.includes(ingre)) {
+                          if (data.recetas[i].ingredientes.includes(ingre)) { 
                               coincidencias++;
                               if (coincidencias === data.recetas[i].ingredientes.length) {
                                   tieneTodosLosIngredientes = true;
