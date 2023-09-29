@@ -361,6 +361,13 @@ body{
     border-radius: 1em;
 }
 
+.im_rece{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+}
+
 @media   (max-width: 800px) {
     #slogan{
         font-size: 1.5em;

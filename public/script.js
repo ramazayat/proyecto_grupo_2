@@ -1,7 +1,8 @@
 const submitBtn = document.getElementById('submitBtn');
 const outputDiv = document.getElementById('output');
 const ingredientesUsuario=[];
-const listaIngredientes = {0: "Huevo", 1: "Harina", 2: "Leche", 3:"Papa", 4: "Manteca", 5: "Cerdo", 6: "Pan rallado", 7:"Carne", 8:"Pollo", 9:"Pescado", 10 : "Salsa de tomate", 11: "Lechuga", 12: "Queso", 13: "Salsa César", 14: "Crema", 15: "Levadura", 16: "Tomate", 17: "Salsa de soja", 18: "Cacao", 19: "Palta", 20: "Manzana", 21: "Banana", 22: "Chips de chocolate", 23: "Arroz", 24: "Brócoli", 25: "Champiñones", 26: "Espinaca", 27: "Frutilla", 28: "Lentejas", 29: "Limón", 30: "Langostinos", 31: "Melón"} 
+//hay que arreglar esto
+const listaIngredientes = {1: "Huevo", 2: "Harina", 3: "Leche", 4:"Papa", 5: "Manteca", 6: "Cerdo",  7:"Carne", 8:"Pollo", 9:"Pescado", 10 : "Salsa de tomate", 11: "Lechuga", 12: "Queso", 13: "Salsa César", 14: "Crema", 15: "Levadura", 16: "Tomate", 17: "Salsa de soja", 18: "Cacao", 19: "Palta", 20: "Manzana", 21: "Banana", 22: "Chips de chocolate", 23: "Arroz", 24: "Brócoli", 25: "Champiñones", 26: "Espinaca", 27: "Frutilla", 28: "Lentejas", 29: "Limón", 30: "Langostinos", 31: "Melón", 32: "Pan rallado",} 
 
 function ingrediente_click(idIngrediente){
   // Obtener el checkbox por su id
@@ -149,11 +150,14 @@ submitBtn.addEventListener('click', () => {
             
                   </div>
                   </div>`
-                  textContent += ` <div class="argentum pasos col-10">
+                  textContent += ` <div class="argentum pasos col-7">
                     <p class="titulitos4">
                       Pasos a seguir:
                     </p>
                     ${receta.pasos}
+                    </div>
+                    <div class="col-3">
+                    <img class="im_rece" src="${receta.img}" alt="Imagen de ${receta.nombre}">
                     </div>
                   </div>
                 </div>
