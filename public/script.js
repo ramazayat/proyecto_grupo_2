@@ -2,8 +2,7 @@ const submitBtn = document.getElementById('submitBtn');
 const outputDiv = document.getElementById('output');
 const ingredientesUsuario=[];
 //hay que arreglar esto
-const listaIngredientes = {1: "Huevo", 2: "Harina", 3: "Leche", 4:"Papa", 5: "Manteca", 6: "Cerdo",  7:"Carne", 8:"Pollo", 9:"Pescado", 10 : "Salsa de tomate", 11: "Lechuga", 12: "Queso", 13: "Salsa César", 14: "Crema", 15: "Levadura", 16: "Tomate", 17: "Salsa de soja", 18: "Cacao", 19: "Palta", 20: "Manzana", 21: "Banana", 22: "Chips de chocolate", 23: "Arroz", 24: "Brócoli", 25: "Champiñones", 26: "Espinaca", 27: "Frutilla", 28: "Lentejas", 29: "Limón", 30: "Langostinos", 31: "Melón", 32: "Pan rallado",} 
-
+//const listaIngredientes = {1: "Huevo", 2: "Harina", 3: "Leche", 4:"Papa", 5: "Manteca", 6: "Cerdo",  7:"Carne", 8:"Pollo", 9:"Pescado", 10 : "Salsa de tomate", 11: "Lechuga", 12: "Queso", 13: "Salsa César", 14: "Crema", 15: "Levadura", 16: "Tomate", 17: "Salsa de soja", 18: "Cacao", 19: "Palta", 20: "Manzana", 21: "Banana", 22: "Chips de chocolate", 23: "Arroz", 24: "Brócoli", 25: "Champiñones", 26: "Espinaca", 27: "Frutilla", 28: "Lentejas", 29: "Limón", 30: "Langostinos", 31: "Melón", 32: "Pan rallado",} 
 function ingrediente_click(idIngrediente){
   // Obtener el checkbox por su id
   var checkbox = document.getElementById(idIngrediente);
@@ -46,7 +45,7 @@ submitBtn.addEventListener('click', () => {
     let textContent = ``
     textContent +=
         `<div class="accordion recetaSalida">`;
-       data.recetas.forEach((receta, i) => {
+       data.resultado.recetas.forEach((receta, i) => {
         console.log(receta)
         if (receta.faltantes !== receta.ingredientes.length) {
             textContent += `
@@ -58,9 +57,9 @@ submitBtn.addEventListener('click', () => {
                       let coincidencias = 0;
                       let tieneTodosLosIngredientes = false;
                       for (const ingre of ingredientesUsuario) {
-                          if (data.recetas[i].ingredientes.includes(ingre)) { 
+                          if (data.resultado.recetas[i].ingredientes.includes(ingre)) { 
                               coincidencias++;
-                              if (coincidencias === data.recetas[i].ingredientes.length) {
+                              if (coincidencias === data.resultado.recetas[i].ingredientes.length) {
                                   tieneTodosLosIngredientes = true;
                                   break; // Salir del bucle si se encuentran todos los ingredientes
                               }
@@ -90,7 +89,7 @@ submitBtn.addEventListener('click', () => {
                         </p>
                         <ul>`;
             receta.ingredientes.forEach((ingrediente) => {
-                let name = listaIngredientes[ingrediente];
+                let name = data.resultado.listaIngredientes;
                 textContent += `
                                   <li class="argentum ">
                                     ${name}
