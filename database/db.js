@@ -14,6 +14,23 @@ connection.connect((err) =>{
   if (err) throw (err)
 })
 
+function obtenerIngredientes(){
+  return new Promise((resolve, reject) => {
+    // Fetching last name from the MySQL database
+    connection.query(
+      'SELECT * FROM ingredientes;',
+      (error, results) => {
+        if (error) {
+          console.error('Error:', error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      }
+    );
+  });
+}
+
   function obtenerRecetas(inputUser){
     return new Promise((resolve, reject) => {
       connection.query(
@@ -32,22 +49,6 @@ connection.connect((err) =>{
     });
   }
 
-  function obtenerIngredientes(){
-    return new Promise((resolve, reject) => {
-      // Fetching last name from the MySQL database
-      connection.query(
-        'SELECT nombre_ingrediente FROM ingredientes;',
-        (error, results) => {
-          if (error) {
-            console.error('Error:', error);
-            reject(error);
-          } else {
-            resolve(results);
-          }
-        }
-      );
-    });
-  }
 // Exporta las funciones que se quieran usar desde otros archivos
 module.exports = {
   obtenerRecetas, obtenerIngredientes,

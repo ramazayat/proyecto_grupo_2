@@ -89,11 +89,16 @@ submitBtn.addEventListener('click', () => {
                         </p>
                         <ul>`;
             receta.ingredientes.forEach((ingrediente) => {
-                let name = data.resultado.listaIngredientes;
-                textContent += `
+               
+                for(let e = 0; e<data.resultado.listaIngredientes.length; e++){
+                  if(data.resultado.listaIngredientes[e].id_ingredientes == ingrediente){
+                   let name = data.resultado.listaIngredientes[e].nombre_ingrediente;
+                  textContent += `
                                   <li class="argentum ">
                                     ${name}
                                   </li>`;
+                }
+                }
             });
             textContent += `
                         </ul>

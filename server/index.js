@@ -4,14 +4,15 @@ const port = 5000; // Puerto de la APP Web
 
 // Código para importar el módulo 'bd' que maneja la conexión y las consultas a la BBDD (Está comentado para que no falle si no está corriendo el servidor MySQL)
 const db = require('./../database/db');
-const listaIngredientes = db.obtenerIngredientes();
 
 app.use(express.static(__dirname + "/../public")); // Indica que la carpeta 'public' contiene los archivos estáticos de la aplicación web
 app.use(express.json());  // Indica que se usarán datos en formato JSON en las peticiones
-
 app.post('/obtenerRecetas', (req, res) => {
   const { ingredientesUsuario } = req.body;
-  //let recetas = ordenarRecetas(ingredientesUsuario);
+  let resultado = new Object()
+  const listaIngredientes = db.obtenerIngredientes().then((listaIngredientes)=>{
+    resultado.listaIngredientes = listaIngredientes; 
+    })
   const recetas = db.obtenerRecetas(ingredientesUsuario).then((recetas) => {
     recetas.forEach(receta => {
       let nueva_lista_ingredientes = [];
@@ -21,9 +22,7 @@ app.post('/obtenerRecetas', (req, res) => {
       receta.ingredientes = nueva_lista_ingredientes
     });
     ordenarRecetas(ingredientesUsuario, recetas);
-    let resultado = new Object()
     resultado.recetas = recetas;
-    resultado.listaIngredientes = listaIngredientes;
     console.log(resultado);
     //recetas cambiar por resultados asi van recetas + list ingredientes*/ 
     res.json({resultado});
