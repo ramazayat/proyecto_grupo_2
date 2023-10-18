@@ -46,7 +46,6 @@ submitBtn.addEventListener('click', () => {
     textContent +=
         `<div class="accordion recetaSalida">`;
        data.resultado.recetas.forEach((receta, i) => {
-        console.log(receta)
         if (receta.faltantes !== receta.ingredientes.length) {
             textContent += `
               <div class="accordion-item">
@@ -89,15 +88,22 @@ submitBtn.addEventListener('click', () => {
                         </p>
                         <ul>`;
             receta.ingredientes.forEach((ingrediente) => {
-               
+              let name;
                 for(let e = 0; e<data.resultado.listaIngredientes.length; e++){
+                  /*
+                    for(let k=0; k<data.resultado.cantidades.length; i++){
+                      if(receta.id_receta == data.resultado.cantidades[k].id_receta && data.resultado.cantidades[k].id_ingrediente == ingrediente){
+                        name = data.resultado.cantidades[k].cantidad + " " + data.resultado.cantidades[k].unidad_de_medida
+                      }
+                    } 
+                  */
                   if(data.resultado.listaIngredientes[e].id_ingredientes == ingrediente){
-                   let name = data.resultado.listaIngredientes[e].nombre_ingrediente;
-                  textContent += `
-                                  <li class="argentum ">
-                                    ${name}
-                                  </li>`;
-                }
+                   name += " " + data.resultado.listaIngredientes[e].nombre_ingrediente;
+                    textContent += `
+                                    <li class="argentum ">
+                                      ${name}
+                                    </li>`;
+                  }
                 }
             });
             textContent += `

@@ -12,7 +12,10 @@ app.post('/obtenerRecetas', (req, res) => {
   let resultado = new Object()
   const listaIngredientes = db.obtenerIngredientes().then((listaIngredientes)=>{
     resultado.listaIngredientes = listaIngredientes; 
-    })
+  })
+  const cantidades = db.obtenerCantPorReceta().then((cantidades)=>{
+    resultado.cantidades = cantidades; 
+  })
   const recetas = db.obtenerRecetas(ingredientesUsuario).then((recetas) => {
     recetas.forEach(receta => {
       let nueva_lista_ingredientes = [];

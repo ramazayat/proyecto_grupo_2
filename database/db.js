@@ -31,6 +31,23 @@ function obtenerIngredientes(){
   });
 }
 
+function obtenerCantPorReceta(){
+  return new Promise((resolve, reject) => {
+    // Fetching last name from the MySQL database
+    connection.query(
+      'SELECT * FROM ingredienteporreceta;',
+      (error, results) => {
+        if (error) {
+          console.error('Error:', error);
+          reject(error);
+        } else {
+          resolve(results);
+        }
+      }
+    );
+  });
+}
+
   function obtenerRecetas(inputUser){
     return new Promise((resolve, reject) => {
       connection.query(
@@ -51,5 +68,5 @@ function obtenerIngredientes(){
 
 // Exporta las funciones que se quieran usar desde otros archivos
 module.exports = {
-  obtenerRecetas, obtenerIngredientes,
+  obtenerRecetas, obtenerIngredientes, obtenerCantPorReceta,
 };
