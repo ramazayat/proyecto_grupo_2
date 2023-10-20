@@ -41,7 +41,7 @@ submitBtn.addEventListener('click', () => {
 }) // Luego de enviar la petición, se espera a que el servidor responda
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
-    
+    let sinResultado = false
     let textContent = ``
     textContent +=
         `<div class="accordion recetaSalida">`;
@@ -90,13 +90,11 @@ submitBtn.addEventListener('click', () => {
             receta.ingredientes.forEach((ingrediente) => {
               let name;
                 for(let e = 0; e<data.resultado.listaIngredientes.length; e++){
-                  /*
-                    for(let k=0; k<data.resultado.cantidades.length; i++){
-                      if(receta.id_receta == data.resultado.cantidades[k].id_receta && data.resultado.cantidades[k].id_ingrediente == ingrediente){
+                    for(let k=0; k<data.resultado.cantidades.length; k++){
+                      if(receta.id_receta == data.resultado.cantidades[k].id_receta && data.resultado.cantidades[k].id_ingrediente == ingrediente && data.resultado.cantidades[k].cantidad>0){
                         name = data.resultado.cantidades[k].cantidad + " " + data.resultado.cantidades[k].unidad_de_medida
                       }
                     } 
-                  */
                   if(data.resultado.listaIngredientes[e].id_ingredientes == ingrediente){
                    name += " " + data.resultado.listaIngredientes[e].nombre_ingrediente;
                     textContent += `
@@ -121,12 +119,12 @@ submitBtn.addEventListener('click', () => {
                         for (let j = 0; j < receta.dificultad; j++) {
                             if(receta.dificultad==1 || receta.dificultad==2){
                               textContent += `<i class="fa-solid fa-spoon verde"> </i> `;
-                        }else if(receta.dificultad==3 || receta.dificultad==4){
-                          textContent += `<i class="fa-solid fa-spoon amarillo"> </i> `;
-                        }else if(receta.dificultad==5){
-                          textContent += `<i class="fa-solid fa-spoon rojo"> </i> `;
+                            }else if(receta.dificultad==3 || receta.dificultad==4){
+                              textContent += `<i class="fa-solid fa-spoon amarillo"> </i> `;
+                            }else if(receta.dificultad==5){
+                              textContent += `<i class="fa-solid fa-spoon rojo"> </i> `;
+                            }
                         }
-                      }
                         for (let j = 0; j < (5 - receta.dificultad); j++) {
                             textContent += `<i class="fa-solid fa-spoon"> </i> `;
                         }
@@ -172,11 +170,16 @@ submitBtn.addEventListener('click', () => {
                   </div>
                 </div>
               </div>
-      </div>`;
+        </div>`;
+        }else{
+          if(!sinResultado)
+          {
+            textContent += `<div>No tenemos recetas con estos ingredientes.</div>`
+            sinResultado=true
+          }
+          
         }
     });
-    
-    
     
     $("#output").html(textContent);
     
