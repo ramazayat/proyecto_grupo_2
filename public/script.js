@@ -41,7 +41,7 @@ submitBtn.addEventListener('click', () => {
 }) // Luego de enviar la petición, se espera a que el servidor responda
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
-    let sinResultado = false
+   // let sinResultado = false
     let textContent = ``
     textContent +=
         `<div class="accordion recetaSalida">`;
@@ -93,6 +93,8 @@ submitBtn.addEventListener('click', () => {
                     for(let k=0; k<data.resultado.cantidades.length; k++){
                       if(receta.id_receta == data.resultado.cantidades[k].id_receta && data.resultado.cantidades[k].id_ingrediente == ingrediente && data.resultado.cantidades[k].cantidad>0){
                         name = data.resultado.cantidades[k].cantidad + " " + data.resultado.cantidades[k].unidad_de_medida
+                      }else if(receta.id_receta == data.resultado.cantidades[k].id_receta && data.resultado.cantidades[k].id_ingrediente == ingrediente && data.resultado.cantidades[k].cantidad==0){
+                        name = " " + data.resultado.cantidades[k].unidad_de_medida
                       }
                     } 
                   if(data.resultado.listaIngredientes[e].id_ingredientes == ingrediente){
@@ -171,14 +173,14 @@ submitBtn.addEventListener('click', () => {
                 </div>
               </div>
         </div>`;
-        }else{
+        
+        }/*else{
           if(!sinResultado)
           {
             textContent += `<div>No tenemos recetas con estos ingredientes.</div>`
             sinResultado=true
           }
-          
-        }
+        }*/
     });
     
     $("#output").html(textContent);
