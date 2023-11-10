@@ -41,12 +41,14 @@ submitBtn.addEventListener('click', () => {
 }) // Luego de enviar la petición, se espera a que el servidor responda
   .then(response => response.json()) // Se convierte la respuesta a JSON
   .then(data => { // Si la conversión fue exitosa, se muestra en pantalla
-   // let sinResultado = false
+    
+    let sinResultado = false
     let textContent = ``
     textContent +=
         `<div class="accordion recetaSalida">`;
        data.resultado.recetas.forEach((receta, i) => {
         if (receta.faltantes !== receta.ingredientes.length) {
+         
             textContent += `
               <div class="accordion-item">
                 <div class="accordion-header">
@@ -174,18 +176,26 @@ submitBtn.addEventListener('click', () => {
               </div>
         </div>`;
         
-        }/*else{
+        }else{
+         
           if(!sinResultado)
           {
-            textContent += `<div>No tenemos recetas con estos ingredientes.</div>`
+            textContent += `<div class="marca argentum no_ingredientes_lbl">No tenemos recetas con estos ingredientes.</div>`
             sinResultado=true
           }
-        }*/
+        }
     });
     
     $("#output").html(textContent);
+    if($(".accordion-item").length>0)
+    {
+      $(".no_ingredientes_lbl").html("")
+    }
     
+
+
     })
+    
   
   .catch(error => { // Si hubo un error, se muestra en consola
     console.error('Error:', error);
